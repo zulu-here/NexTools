@@ -114,7 +114,7 @@ body.intro-lock{overflow:hidden}
 #cinematicIntro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#050912!important;color:#f7fbff;opacity:1;visibility:visible;pointer-events:none;transition:opacity .8s cubic-bezier(.22,.7,.25,1),visibility .8s ease}
 #cinematicIntro.intro-out{opacity:0;visibility:hidden;pointer-events:none}
 .intro-core{position:relative;top:-9vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(28px,5vh,48px);max-width:100%;padding:24px;text-align:center;perspective:1100px;transform-style:preserve-3d;animation:introFloat 3.2s cubic-bezier(.45,0,.55,1) 1.25s infinite}
-.intro-wordmark{position:relative;display:inline-block;max-width:100%;font-size:clamp(48px,11vw,124px);font-weight:950;line-height:1.08;letter-spacing:-.075em;white-space:nowrap;transform-style:preserve-3d;transform-origin:center center;animation:introReveal 1.35s cubic-bezier(.16,1,.3,1) both;pointer-events:auto;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;text-shadow:0 2px 0 #23496f,0 5px 0 #173757,0 8px 0 #102b46,0 14px 28px #0009}
+.intro-wordmark{position:relative;display:inline-block;max-width:100%;font-size:clamp(48px,11vw,124px);font-weight:950;line-height:1.08;letter-spacing:-.075em;white-space:nowrap;transform-style:preserve-3d;transform-origin:center center;animation:introReveal 1.35s cubic-bezier(.16,1,.3,1) both;pointer-events:auto;cursor:default;user-select:none;-webkit-tap-highlight-color:transparent;text-shadow:0 2px 0 #23496f,0 5px 0 #173757,0 8px 0 #102b46,0 14px 28px #0009}
 .intro-char{display:inline-block;transform-style:preserve-3d;animation:introLetterWave 1.15s cubic-bezier(.22,.75,.25,1) both;animation-delay:calc(var(--i, 0) * 55ms + 180ms);will-change:transform,opacity}
 .intro-wordmark{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s ease,text-shadow .35s ease}
 .intro-wordmark:hover{transform:translateY(-7px) rotateX(-5deg) rotateY(5deg) scale(1.055);filter:drop-shadow(0 0 24px #4ba7ff70);text-shadow:0 3px 0 #2b6092,0 7px 0 #173757,0 11px 0 #102b46,0 20px 36px #000b}
@@ -185,7 +185,7 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
 <div id="cinematicIntro" role="dialog" aria-label="NexTools introduction" aria-modal="true">
   <div class="intro-core">
     <div class="intro-wordmark" data-text="NexTools" aria-label="NexTools"><span class="intro-nex">Nex</span><span class="intro-tools">Tools</span></div>
-    <button class="intro-enter" type="button" id="introEnter">Pour entrer sur le site <span class="enter-arrow" aria-hidden="true">→</span></button>
+    <button class="intro-enter" type="button" id="introEnter">Accéder au site <span class="enter-arrow" aria-hidden="true">→</span></button>
   </div>
 </div>
 
@@ -394,7 +394,7 @@ finally{aiSetBusy(false);$('aiInput').focus();$('aiMessages').scrollTop=$('aiMes
     setTimeout(()=>{if(intro.isConnected)intro.remove();},850);
   };
   const onKey=e=>{if(e.key==='Escape')finish();};
-  if(wordmark)wordmark.addEventListener('click',finish,{once:true});
+  // The wordmark is decorative/hover-only: only the dedicated button enters the site.
   const enterButton=document.getElementById('introEnter');
   if(enterButton)enterButton.addEventListener('click',finish,{once:true});
   document.addEventListener('keydown',onKey);
