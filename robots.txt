@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zulu-here.github.io/NexTools/sitemap.xml
