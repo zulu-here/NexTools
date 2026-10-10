@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090b12">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#05070d">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%237c8cff'/%3E%3Cpath d='M13 33V15L35 33V15' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='35' cy='15' r='3' fill='%23a5f3fc'/%3E%3C/svg%3E">
 <meta name="description" content="Free online tools for text, passwords, JSON, URLs, Base64, UUIDs, colors and calculations. Fast, private and simple.">
 <title>NexTools — Free Online Tools</title>
@@ -33,6 +33,68 @@ body{isolation:isolate;overflow-x:hidden;background-color:#070912;background-ima
 @media(max-width:600px){.ai-section{margin-top:25px}.ai-topline{padding:14px}.ai-body{padding:14px}.ai-label{display:none}.ai-message{max-width:97%}.ai-foot{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.ai-section:before,.ai-orb:after,.ai-message,.ai-thinking i{animation:none!important}}
 
+/* === NexTools CYBER NEON visual layer — CSS only, tool logic untouched === */
+:root{
+  --bg:#05070d;--panel:#0b111c;--panel2:#101a2a;--line:#183246;
+  --text:#eafaff;--muted:#8ba8b8;--blue:#00e5ff;--purple:#b967ff;--mint:#6dffcf;
+  --radius:16px;
+  color-scheme:dark;
+}
+body{
+  background:
+    radial-gradient(ellipse at 12% 0%,#00e5ff12 0,transparent 32%),
+    radial-gradient(ellipse at 92% 12%,#b967ff16 0,transparent 28%),
+    linear-gradient(#07101b 1px,transparent 1px),
+    linear-gradient(90deg,#07101b 1px,transparent 1px),var(--bg);
+  background-size:auto,auto,36px 36px,36px 36px,auto;
+  background-attachment:fixed;
+}
+.navbar{background:#05070de8;border-bottom-color:#00e5ff28;box-shadow:0 8px 35px #0005}
+.brand{letter-spacing:-.8px}.brand-mark{
+  border:1px solid #00e5ff99;border-radius:11px;
+  background:linear-gradient(145deg,#00e5ff26,#b967ff30);
+  color:#c8fbff;box-shadow:0 0 10px #00e5ff35,inset 0 0 14px #00e5ff12;
+}
+.brand span:last-child span{color:var(--blue);text-shadow:0 0 18px #00e5ff50}
+.nav-links a:hover{color:var(--blue);text-shadow:0 0 15px #00e5ff50}
+.nav-cta,.primary{
+  background:linear-gradient(110deg,#00bcd4,#6f4dff);border:1px solid #74f6ff80;
+  box-shadow:0 0 18px #00d9ff24,inset 0 0 12px #ffffff0a;
+}
+.nav-cta:hover,.primary:hover{box-shadow:0 0 26px #00d9ff45;filter:brightness(1.12)}
+.hero{padding-top:92px}
+.eyebrow{border-color:#00e5ff55;background:#00e5ff0b;color:#a9f8ff;box-shadow:0 0 24px #00e5ff0b}
+.dot{background:var(--mint);box-shadow:0 0 15px var(--mint)}
+h1{text-shadow:0 0 38px #00e5ff0a}
+.gradient{background:linear-gradient(100deg,#6cf6ff 0%,#00e5ff 36%,#bd82ff 76%,#ff78da 100%);background-clip:text;-webkit-background-clip:text}
+.search-wrap{border-color:#1b5064;background:#08121d;box-shadow:0 0 0 1px #00e5ff0b,0 20px 60px #0008}
+.search-wrap:focus-within{border-color:#00e5ff;box-shadow:0 0 0 4px #00e5ff18,0 0 30px #00e5ff14}
+.kbd{border-color:#254557;color:#a4d8e6;background:#07101a}
+.stats strong{color:#b5f9ff}
+.section-head h2,.workspace-head h2{letter-spacing:-.7px}
+.tool-card,.panel{border-color:#193346;background:linear-gradient(145deg,#0d1927f5,#080e18f7);box-shadow:inset 0 1px #ffffff05}
+.tool-card:before{background:radial-gradient(circle at 100% 0,#00e5ff1d,transparent 46%),radial-gradient(circle at 0% 100%,#b967ff10,transparent 45%)}
+.tool-card:hover{border-color:#00e5ff99;box-shadow:0 0 0 1px #00e5ff12,0 0 28px #00e5ff12,0 20px 45px #0007}
+.tool-icon{border:1px solid #00e5ff35;background:linear-gradient(140deg,#00e5ff16,#b967ff16);color:#8df5ff;box-shadow:inset 0 0 18px #00e5ff08}
+.tool-arrow{color:#7defff}
+.filter{background:#08121d;border-color:#1a3547;color:#a4c2cf}
+.filter:hover,.filter.active{border-color:#00e5ff85;background:linear-gradient(120deg,#00e5ff1c,#b967ff18);box-shadow:0 0 18px #00e5ff10;color:#e9fcff}
+.panel:target{border-color:#00e5ff99;box-shadow:0 0 0 3px #00e5ff12,0 0 30px #00e5ff0b}
+.field,.area,.select,.output{border-color:#1b3b4f;background:#050b13}
+.field:focus,.area:focus,.select:focus{border-color:#00e5ff;box-shadow:0 0 0 3px #00e5ff14}
+.secondary{background:#0d1926;border-color:#234357;color:#d9faff}
+.secondary:hover{background:#102536;border-color:#00bcd4;box-shadow:0 0 16px #00e5ff10}
+.metric{background:#07111c;border-color:#1a3547}.metric strong{color:#c6faff}
+.range-row input,.checks input{accent-color:#00d9ff}
+.calc-key{background:#0c1926;border-color:#1c394d}.calc-key:hover{background:#10283a;border-color:#00bcd4}
+.calc-key.op{color:#e0aaff;background:#1a1230;border-color:#382653}
+.calc-key.eq{background:linear-gradient(120deg,#00aebf,#6c43ed);border:1px solid #7af6ff70;box-shadow:0 0 18px #00e5ff20}
+.about-card{background:#0b1420d9;border-color:#193346}.about-card:hover{border-color:#00e5ff55;box-shadow:0 0 25px #00e5ff0b}
+footer{border-top-color:#183246;background:#05070d66}
+.toast{background:#0d1926;border-color:#00e5ff55;box-shadow:0 0 28px #00e5ff15}
+::selection{background:#00e5ff40;color:#fff}
+@media(max-width:600px){.nav-links{background:#07111c;border-color:#1a3a4d}.hero{padding-top:68px}h1{letter-spacing:-2.2px}}
+/* === End cyber neon layer === */
 </style>
 </head>
 <body>
