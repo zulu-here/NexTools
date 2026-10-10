@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#05070d">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%237c8cff'/%3E%3Cpath d='M13 33V15L35 33V15' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='35' cy='15' r='3' fill='%23a5f3fc'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop stop-color=%27%23f8fcff%27/%3E%3Cstop offset=%271%27 stop-color=%27%2349a5ff%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=%272%27 y=%272%27 width=%2760%27 height=%2760%27 rx=%2718%27 fill=%27%23070e1c%27 stroke=%27%234ba7ff%27 stroke-width=%272%27/%3E%3Cpath d=%27M17 45V19L47 45V19%27 fill=%27none%27 stroke=%27url(%23g)%27 stroke-width=%276%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M12 52H52%27 stroke=%27%234ba7ff%27 stroke-width=%272%27 stroke-linecap=%27round%27 opacity=%27.8%27/%3E%3C/svg%3E">
 <meta name="description" content="Free online tools for text, passwords, JSON, URLs, Base64, UUIDs, colors and calculations. Fast, private and simple.">
 <title>NexTools — Free Online Tools</title>
 <style>
@@ -108,12 +108,117 @@ body{padding-left:258px}.app-shell{min-width:0}.sidebar{position:fixed;z-index:3
 @media(max-width:1000px){body{padding-left:0}.sidebar{transform:translateX(-105%);transition:transform .25s;box-shadow:20px 0 50px #0008}.sidebar.open{transform:translateX(0)}.side-overlay.open{display:block;position:fixed;inset:0;z-index:25;background:#02050bcc;backdrop-filter:blur(3px)}.side-mobile-toggle{display:inline-flex;align-items:center;gap:7px;background:#101827;border:1px solid #26394c;color:#dff7ff;padding:8px 11px;border-radius:10px}.nav-inner{justify-content:flex-start}.nav-links{margin-left:auto}.side-brand{padding-top:8px}}
 @media(max-width:600px){.nav-links{margin-left:0}.side-mobile-toggle{font-size:12px;padding:7px 9px}.hero{padding-top:42px}.side-bottom{margin-bottom:20px}}
 
+
+/* Cinematic first-entry splash */
+body.intro-lock{overflow:hidden}
+#cinematicIntro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#03050c;color:#f4fbff;opacity:1;visibility:visible;transition:opacity .8s ease,visibility .8s ease;isolation:isolate}
+#cinematicIntro.intro-out{opacity:0;visibility:hidden;pointer-events:none}
+#cinematicIntro:before{content:"";position:absolute;inset:-40%;background:repeating-linear-gradient(115deg,transparent 0 95px,#5fe7ff08 96px 97px,transparent 98px 190px),radial-gradient(ellipse at 50% 50%,#153a5a 0, #080c1b 32%,#03050c 66%);animation:introNebula 8s ease-in-out infinite alternate;z-index:-3}
+#cinematicIntro:after{content:"";position:absolute;left:-20%;right:-20%;top:50%;height:2px;background:linear-gradient(90deg,transparent,#49e6ff,#e8fbff,#a66cff,transparent);box-shadow:0 0 20px #38dfff,0 0 65px #488dff;opacity:0;transform:scaleX(.1);animation:introBeam 1.3s .75s ease-out forwards;z-index:-1}
+.intro-grid{position:absolute;inset:45% -30% -55%;background-image:linear-gradient(#4adfff22 1px,transparent 1px),linear-gradient(90deg,#4adfff22 1px,transparent 1px);background-size:62px 62px;transform:perspective(330px) rotateX(62deg);transform-origin:top center;mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 70%,transparent);animation:introGrid 3.8s ease-out both;z-index:-2}
+.intro-stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.intro-stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#b9f7ff;box-shadow:0 0 9px #57dfff;animation:introStar 3.5s ease-out both}
+.intro-core{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(13px,3vw,34px);padding:30px;text-align:left;perspective:1100px;animation:introArrival 1.35s cubic-bezier(.14,.78,.16,1) both}
+.intro-wordmark{position:relative;font-size:clamp(45px,10vw,112px);font-weight:950;line-height:.95;letter-spacing:-.075em;white-space:nowrap;transform-style:preserve-3d;animation:introTilt 4s 1.1s ease-in-out both}
+.intro-wordmark:before{content:attr(data-text);position:absolute;left:0;top:5px;color:#10182a;z-index:-1;text-shadow:1px 1px #263e64,2px 2px #263e64,3px 3px #263e64,4px 4px #263e64,5px 5px #263e64,6px 6px #263e64,7px 7px #263e64,8px 8px #263e64,9px 9px #263e64,10px 10px 18px #000;transform:translateZ(-15px)}
+.intro-wordmark .intro-nex{color:#f5fbff;text-shadow:0 0 12px #a6f5ff80,0 0 42px #3bc9ff50}
+.intro-wordmark .intro-tools{background:linear-gradient(105deg,#5be8ff 0%,#8796ff 45%,#d6a1ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 18px #658cff55)}
+.intro-mark{width:clamp(68px,12vw,126px);aspect-ratio:1;flex:none;display:grid;place-items:center;position:relative;border-radius:27%;border:1px solid #85f3ffb5;background:linear-gradient(145deg,#163b59,#17122d 62%,#0a1020);box-shadow:inset 0 0 28px #46eaff2b,0 0 26px #35d9ff45,0 0 90px #6e68ff35;transform-style:preserve-3d;animation:introLogo3d 3.6s .25s ease-in-out both}
+.intro-mark:before,.intro-mark:after{content:"";position:absolute;inset:-12px;border:1px solid #58eaff65;border-radius:30%;transform:rotate(24deg);box-shadow:0 0 18px #5ceaff20}
+.intro-mark:after{inset:-22px;border-color:#b28aff55;transform:rotate(-28deg);border-radius:35%}
+.intro-mark svg{width:65%;height:65%;filter:drop-shadow(0 0 12px #76eaff);transform:translateZ(24px)}
+.intro-kicker{position:absolute;left:50%;top:calc(50% + clamp(78px,10vw,112px));transform:translateX(-50%);font-size:clamp(9px,1.2vw,12px);letter-spacing:.42em;text-transform:uppercase;color:#91dff4;white-space:nowrap;opacity:0;animation:introTag .8s 1.15s ease-out forwards}
+.intro-skip{position:absolute;right:24px;bottom:22px;padding:9px 13px;border:1px solid #8bdffb45;border-radius:999px;background:#0b1424a8;color:#b7c8db;font-size:12px;cursor:pointer;backdrop-filter:blur(12px);transition:color .2s,border-color .2s}
+.intro-skip:hover{color:white;border-color:#7deaff}
+.intro-hint{position:absolute;bottom:28px;left:25px;color:#58718a;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+@keyframes introArrival{0%{opacity:0;transform:translateY(25px) scale(.28) rotateX(24deg);filter:blur(18px)}55%{opacity:1;filter:blur(0)}75%{transform:translateY(-4px) scale(1.035) rotateX(-2deg)}100%{opacity:1;transform:translateY(0) scale(1) rotateX(0)}}
+@keyframes introTilt{0%,100%{transform:rotateY(-7deg) rotateX(2deg)}50%{transform:rotateY(5deg) rotateX(-1deg)}}
+@keyframes introLogo3d{0%{opacity:0;transform:translateZ(-250px) rotateY(-140deg) rotateX(30deg) scale(.35)}55%{opacity:1;transform:translateZ(30px) rotateY(18deg) rotateX(-8deg) scale(1.05)}100%{opacity:1;transform:translateZ(0) rotateY(0) rotateX(0) scale(1)}}
+@keyframes introBeam{0%{opacity:0;transform:scaleX(.05)}40%{opacity:1;transform:scaleX(1)}100%{opacity:.35;transform:scaleX(1)}}
+@keyframes introGrid{0%{opacity:0;transform:perspective(330px) rotateX(62deg) translateY(60px)}35%,100%{opacity:.8;transform:perspective(330px) rotateX(62deg) translateY(0)}}
+@keyframes introNebula{from{transform:translate3d(-2%,1%,0) rotate(-3deg) scale(1)}to{transform:translate3d(2%,-1%,0) rotate(3deg) scale(1.08)}}
+@keyframes introStar{0%{opacity:0;transform:translateY(28px) scale(.2)}30%{opacity:.9}100%{opacity:0;transform:translateY(-55px) scale(1.6)}}
+@keyframes introTag{from{opacity:0;letter-spacing:.8em;filter:blur(5px)}to{opacity:1;letter-spacing:.42em;filter:blur(0)}}
+@media(max-width:560px){.intro-core{gap:17px;padding:22px}.intro-wordmark{letter-spacing:-.08em}.intro-mark{border-radius:23%}.intro-kicker{top:calc(50% + 70px);letter-spacing:.22em}.intro-hint{display:none}.intro-skip{right:14px;bottom:14px}}
+@media(prefers-reduced-motion:reduce){#cinematicIntro:before,#cinematicIntro:after,.intro-grid,.intro-stars i,.intro-core,.intro-wordmark,.intro-mark,.intro-kicker{animation:none!important}#cinematicIntro{transition:opacity .15s ease}}
+
+
+/* === NexTools identity refresh: midnight navy / electric blue / white === */
+:root{--bg:#050912;--panel:#0b1422;--panel2:#101d30;--line:#20334b;--text:#f7fbff;--muted:#9aabc1;--blue:#4ba7ff;--purple:#8cc8ff;--mint:#b9e4ff;--radius:18px;color-scheme:dark}
+body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),radial-gradient(ellipse at 90% 15%,#0a1c36 0,transparent 31%),var(--bg)}
+.navbar{background:#050912e8;border-bottom-color:#8bcaff20}
+.brand-mark{background:linear-gradient(145deg,#f8fcff 0%,#91caff 45%,#338dff 100%);border:1px solid #ffffffb5;box-shadow:0 0 0 3px #4ba7ff12,0 6px 26px #1688ff45}
+.brand span:last-child span{color:#8fcaff}
+.side-brand-mark{width:42px;height:42px;border-radius:14px!important}
+.nav-cta,.primary,.calc-key.eq{background:linear-gradient(120deg,#f7fbff 0%,#a6d7ff 36%,#318eff 100%);color:#06101d!important;box-shadow:0 7px 28px #1688ff24;border:1px solid #ffffffa6}
+.nav-cta:hover,.primary:hover{filter:brightness(1.07);box-shadow:0 9px 32px #1688ff45}
+.hero .eyebrow{border-color:#4ba7ff55;background:#4ba7ff0d;color:#d9edff}
+.gradient{background:linear-gradient(100deg,#ffffff 0%,#b7ddff 38%,#4ba7ff 82%,#e8f5ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.search-wrap{border-color:#29435f;background:#0b1422}
+.search-wrap:focus-within,.field:focus,.area:focus,.select:focus{border-color:#4ba7ff;box-shadow:0 0 0 4px #4ba7ff17,0 16px 60px #0005}
+.filter:hover,.filter.active{border-color:#4ba7ff99;background:linear-gradient(120deg,#4ba7ff25,#ffffff08);box-shadow:0 4px 18px #1688ff12}
+.tool-card{background:linear-gradient(145deg,#101d30,#080f1b);border-color:#203650}
+.tool-card:before{background:radial-gradient(circle at 100% 0,#4ba7ff1e,transparent 48%)}
+.tool-card:hover{border-color:#4ba7ffb0;box-shadow:0 18px 45px #0006,0 0 0 1px #4ba7ff14}
+.tool-icon{background:linear-gradient(145deg,#d9efff,#4ba7ff);color:#071321;box-shadow:inset 0 1px #ffffffb5,0 5px 20px #1688ff1a}
+.tool-arrow{color:#8fcaff}
+.panel{background:linear-gradient(145deg,#0e1a2b,#080f1b);border-color:#203650}
+.panel:target{border-color:#4ba7ffb0;box-shadow:0 0 0 4px #4ba7ff12}
+.field,.area,.select,.output,.markdown-preview{background:#060c16;border-color:#263c56}
+.secondary{background:#111e30;border-color:#2a405b;color:#eef7ff}
+.secondary:hover{background:#172a42;border-color:#4ba7ff88}
+.status{color:#a7d9ff}
+.range-row input,.checks input{accent-color:#4ba7ff}
+.calc-key.op{color:#c9e6ff;background:#122a43}
+.calc-key{background:#111e30;border-color:#2a405b}
+.about-card{background:linear-gradient(145deg,#0e1a2b,#080f1b);border-color:#203650}
+.support-card{border-color:#4ba7ff55;background:radial-gradient(ellipse at 0 0,#4ba7ff15,transparent 55%),linear-gradient(135deg,#0d1b2d,#080f1b);box-shadow:0 0 30px #1688ff0a}
+.support-button,.side-bottom a{border-color:#7fc4ff88;background:linear-gradient(115deg,#102b45,#1d5c98);box-shadow:0 0 20px #1688ff18,inset 0 0 18px #4ba7ff0a;color:#f7fbff!important}
+.support-button:hover{border-color:#a8dbff;box-shadow:0 0 26px #1688ff35}
+.sidebar{background:linear-gradient(180deg,#081322 0%,#050912 100%);border-right-color:#203b57}
+.side-link:hover,.side-category:hover,.side-link.active{color:#f7fbff;background:#10243a;border-color:#234866}
+.side-link .side-icon,.side-category .side-icon{color:#8bcaff}
+.side-bottom{border-color:#23435f;background:linear-gradient(135deg,#0c2033,#0a1120)}
+.side-bottom strong{color:#eaf6ff}
+.side-mobile-toggle,.menu-toggle{background:#0d1b2d;border-color:#27415e;color:#f3f9ff}
+.favorite-toggle{border-color:#2c4562;background:#081321;color:#a8bed4}
+.favorite-toggle.is-favorite{color:#fff;border-color:#6ca8e8;background:#143253}
+.toast{border-color:#2c4562;background:#0e1a2b}
+#cinematicIntro{background:#030710}
+#cinematicIntro:before{background:repeating-linear-gradient(115deg,transparent 0 95px,#7dcaff08 96px 97px,transparent 98px 190px),radial-gradient(ellipse at 50% 50%,#12375d 0,#080f20 34%,#030710 66%)}
+#cinematicIntro:after{background:linear-gradient(90deg,transparent,#4ba7ff,#ffffff,#8dcaff,transparent);box-shadow:0 0 20px #4ba7ff,0 0 65px #267dff}
+.intro-grid{background-image:linear-gradient(#4ba7ff22 1px,transparent 1px),linear-gradient(90deg,#4ba7ff22 1px,transparent 1px)}
+.intro-stars i{background:#fff;box-shadow:0 0 9px #4ba7ff}
+.intro-wordmark .intro-nex{color:#fff;text-shadow:0 0 12px #fff8,0 0 42px #4ba7ff55}
+.intro-wordmark .intro-tools{background:linear-gradient(105deg,#fff 0%,#b8e0ff 42%,#4ba7ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 18px #4ba7ff44)}
+.intro-mark{border-color:#8acaff;background:linear-gradient(145deg,#102b46,#091426 62%,#050b16);box-shadow:inset 0 0 28px #4ba7ff22,0 0 26px #1688ff35,0 0 90px #267dff20}
+.intro-mark:before,.intro-mark:after{border-color:#4ba7ff65;box-shadow:0 0 18px #4ba7ff20}
+.intro-mark:after{border-color:#d6edff45}
+.intro-mark svg{filter:drop-shadow(0 0 12px #4ba7ff)}
+.intro-kicker{color:#b9e0ff}
+.intro-skip{border-color:#8acaff45;background:#091426b8;color:#d1e5f8}
+.intro-skip:hover{border-color:#8acaff}
+.side-bottom strong{color:#eaf6ff}
+@media(prefers-reduced-motion:reduce){.intro-mark,.intro-wordmark{animation:none!important}}
+
 </style>
 </head>
-<body>
+<body class="intro-lock">
+<div id="cinematicIntro" role="dialog" aria-label="NexTools introduction" aria-modal="true">
+  <div class="intro-stars" aria-hidden="true"><i style="left:9%;top:22%;animation-delay:.1s"></i><i style="left:18%;top:67%;animation-delay:.5s"></i><i style="left:29%;top:17%;animation-delay:.8s"></i><i style="left:74%;top:22%;animation-delay:.2s"></i><i style="left:88%;top:63%;animation-delay:.7s"></i><i style="left:64%;top:78%;animation-delay:1s"></i><i style="left:46%;top:12%;animation-delay:.4s"></i><i style="left:94%;top:38%;animation-delay:1.2s"></i><i style="left:4%;top:48%;animation-delay:.9s"></i><i style="left:57%;top:33%;animation-delay:.6s"></i></div>
+  <div class="intro-grid" aria-hidden="true"></div>
+  <div class="intro-core">
+    <div class="intro-wordmark" data-text="NexTools"><span class="intro-nex">Nex</span><span class="intro-tools">Tools</span></div>
+    <div class="intro-mark" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none"><path d="M50 7 83 25V64L50 91 17 64V25Z" stroke="#67baff" stroke-width="1.7" opacity=".8"/><path d="M27 68V31L73 69V31" stroke="#f7fbff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 79H81" stroke="#4ba7ff" stroke-width="2.5" stroke-linecap="round"/><circle cx="73" cy="31" r="5" fill="#4ba7ff" stroke="#f7fbff" stroke-width="2"/><path d="M11 51C11 28 28 11 51 11" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".75"/></svg></div>
+  </div>
+  <div class="intro-kicker">TOOLS FOR A BETTER FLOW</div>
+  <div class="intro-hint">A smarter way to get things done</div>
+  <button class="intro-skip" id="introSkip" type="button">Skip intro ↗</button>
+</div>
+
 <div class="ambient one" aria-hidden="true"></div><div class="ambient two" aria-hidden="true"></div><div class="ambient three" aria-hidden="true"></div>
 <aside class="sidebar" id="sidebar" aria-label="Tool navigation">
-  <a class="side-brand" href="#home"><span class="brand-mark" aria-hidden="true">N</span><span>Nex<span class="gradient">Tools</span></span></a>
+  <a class="side-brand" href="#home"><span class="brand-mark side-brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" width="29" height="29" fill="none"><path d="M13 34V14L35 34V14" stroke="#07101e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 39H39" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="35" cy="14" r="3" fill="#fff"/></svg></span><span>Nex<span class="gradient">Tools</span></span></a>
   <input class="sidebar-search" id="sideSearch" type="search" placeholder="⌕ Find a tool…" aria-label="Find a tool">
   <div class="side-label">Workspace</div>
   <a class="side-link active" href="#home"><span class="side-icon">⌂</span>Overview</a>
@@ -131,9 +236,9 @@ body{padding-left:258px}.app-shell{min-width:0}.sidebar{position:fixed;z-index:3
   <div class="side-subnav"><a class="side-link" href="#color">Color Converter</a><a class="side-link" href="#gradientTool">CSS Gradient</a></div>
   <button class="side-category" type="button" data-side-filter="math"><span class="side-icon">＋</span>Math & Everyday <span class="side-count">⌄</span></button>
   <div class="side-subnav"><a class="side-link" href="#calculator">Quick Calculator</a><a class="side-link" href="#timestamp">Timestamp Converter</a></div>
-  <div class="side-bottom"><strong>💜 Keep NexTools free</strong><p>Like these tools? Tips help support future updates.</p><a href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer">☕ Support on Ko-fi ↗</a></div>
+  <div class="side-bottom"><strong>✦ Keep NexTools free</strong><p>Like these tools? Tips help support future updates.</p><a href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer">☕ Support on Ko-fi ↗</a></div>
 </aside><div class="side-overlay" id="sideOverlay"></div><div class="app-shell">
-<header class="navbar"><div class="container nav-inner"><button class="side-mobile-toggle" id="sideMobileToggle" type="button" aria-expanded="false">☰ Tools</button><a class="brand" href="#home" aria-label="NexTools home"><span class="brand-mark" aria-hidden="true"><svg class="brand-symbol" viewBox="0 0 48 48" width="27" height="27" aria-hidden="true" focusable="false"><path d="M13 33V15L35 33V15" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="35" cy="15" r="3" fill="#a5f3fc"/></svg></span><span>Nex<span>Tools</span></span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button><nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="#aiAssistant">AI Assistant</a><a href="#tools">All tools</a><a href="#workspace">Workspace</a><a href="#about">About</a><a class="nav-cta" href="#tools">Explore tools ↗</a></nav></div></header>
+<header class="navbar"><div class="container nav-inner"><button class="side-mobile-toggle" id="sideMobileToggle" type="button" aria-expanded="false">☰ Tools</button><a class="brand" href="#home" aria-label="NexTools home"><span class="brand-mark" aria-hidden="true"><svg class="brand-symbol" viewBox="0 0 48 48" width="27" height="27" aria-hidden="true" focusable="false"><path d="M13 33V15L35 33V15" fill="none" stroke="#07101e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 38H39" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".9"/><circle cx="35" cy="15" r="3" fill="#ffffff"/></svg></span><span>Nex<span>Tools</span></span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button><nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="#aiAssistant">AI Assistant</a><a href="#tools">All tools</a><a href="#workspace">Workspace</a><a href="#about">About</a><a class="nav-cta" href="#tools">Explore tools ↗</a></nav></div></header>
 <main id="home"><section class="hero container"><div class="eyebrow"><span class="dot"></span> Simple tools. Smarter work.</div><h1>Less busywork.<br><span class="gradient">More getting things done.</span></h1><p>A growing collection of free, fast and useful tools. No account, no complicated setup — just open and use.</p>
 <div class="ai-section" id="aiAssistant">
   <div class="ai-shell">
@@ -201,8 +306,8 @@ body{padding-left:258px}.app-shell{min-width:0}.sidebar{position:fixed;z-index:3
 <article class="panel" id="jwt"><h3>JWT Decoder</h3><p class="subtext">Decoding does not verify the signature or prove that a token is authentic. Don't paste sensitive live tokens.</p><label class="label" for="jwtInput">JWT token</label><textarea class="area" id="jwtInput" placeholder="eyJhbGciOi..."></textarea><div class="btn-row"><button class="primary" id="decodeJwt">Decode token</button><button class="secondary" id="clearJwt">Clear</button></div><label class="label">Decoded header</label><div class="output utility-output" id="jwtHeader">—</div><label class="label">Decoded payload</label><div class="output utility-output" id="jwtPayload">—</div><div class="status" id="jwtStatus" aria-live="polite"></div></article>
 <article class="panel" id="seo"><h3>⌕ SEO Meta Preview</h3><p class="subtext">Preview a basic Google-style result. Actual search snippets can differ.</p><label class="label" for="seoTitle">Page title</label><input class="field" id="seoTitle" maxlength="100" placeholder="Your page title"><label class="label" for="seoUrl">Page URL</label><input class="field" id="seoUrl" placeholder="https://example.com/page"><label class="label" for="seoDescription">Meta description</label><textarea class="area" id="seoDescription" maxlength="300" placeholder="Describe this page in a useful sentence…"></textarea><div class="output" style="margin-top:14px;background:#fff;color:#202124;border-color:#ddd"><div id="seoPreviewUrl" style="font-size:12px;color:#4d5156">example.com</div><div id="seoPreviewTitle" style="font-size:20px;color:#1a0dab;line-height:1.3">Your page title</div><div id="seoPreviewDescription" style="font-size:13px;color:#4d5156">Your meta description appears here.</div></div></article>
 </div></section>
-<section class="about container reveal" id="about"><div class="section-head"><div><h2>Why NexTools?</h2><p>Useful utilities with less friction.</p></div></div><div class="about-grid"><div class="about-card"><div class="tool-icon">⚡</div><h3>Fast and simple</h3><p>Open a tool and get straight to work, without a complicated setup.</p></div><div class="about-card"><div class="tool-icon">◈</div><h3>Privacy-minded</h3><p>Your text, JSON and generated values are processed locally in your browser.</p></div><div class="about-card"><div class="tool-icon">✦</div><h3>Free to use</h3><p>No account needed. Just open a tool and use it.</p></div></div><div class="support-card"><div class="support-copy"><h3>💜 Enjoying NexTools?</h3><p>NexTools is free to use. If it saves you time, you can support its development with a voluntary tip. No features are locked behind a payment.</p></div><a class="support-button" href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer" aria-label="Support NexTools on Ko-fi">☕ Support NexTools <span aria-hidden="true">↗</span></a></div></section></main>
-<footer><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;border-radius:9px"><svg class="brand-symbol" viewBox="0 0 48 48" width="21" height="21" aria-hidden="true" focusable="false"><path d="M13 33V15L35 33V15" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="35" cy="15" r="3" fill="#a5f3fc"/></svg></span><span>Nex<span>Tools</span></span></a><span>© <span id="year"></span> NexTools. Free tools for everyday work.</span><a href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer">Support this project ↗</a><span>Built to make things easier.</span></div></footer></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<section class="about container reveal" id="about"><div class="section-head"><div><h2>Why NexTools?</h2><p>Useful utilities with less friction.</p></div></div><div class="about-grid"><div class="about-card"><div class="tool-icon">⚡</div><h3>Fast and simple</h3><p>Open a tool and get straight to work, without a complicated setup.</p></div><div class="about-card"><div class="tool-icon">◈</div><h3>Privacy-minded</h3><p>Your text, JSON and generated values are processed locally in your browser.</p></div><div class="about-card"><div class="tool-icon">✦</div><h3>Free to use</h3><p>No account needed. Just open a tool and use it.</p></div></div><div class="support-card"><div class="support-copy"><h3>✦ Enjoying NexTools?</h3><p>NexTools is free to use. If it saves you time, you can support its development with a voluntary tip. No features are locked behind a payment.</p></div><a class="support-button" href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer" aria-label="Support NexTools on Ko-fi">☕ Support NexTools <span aria-hidden="true">↗</span></a></div></section></main>
+<footer><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;border-radius:9px"><svg class="brand-symbol" viewBox="0 0 48 48" width="21" height="21" aria-hidden="true" focusable="false"><path d="M13 33V15L35 33V15" fill="none" stroke="#07101e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 38H39" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".9"/><circle cx="35" cy="15" r="3" fill="#ffffff"/></svg></span><span>Nex<span>Tools</span></span></a><span>© <span id="year"></span> NexTools. Free tools for everyday work.</span><a href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer">Support this project ↗</a><span>Built to make things easier.</span></div></footer></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 const $=id=>document.getElementById(id);let toastTimer;function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 async function copyText(text){if(!text){toast('Nothing to copy yet.');return false}try{await navigator.clipboard.writeText(text);toast('Copied to clipboard!');return true}catch{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();toast(ok?'Copied to clipboard!':'Copy failed — copy manually.');return ok}}
@@ -285,5 +390,9 @@ aiHistory.push({role:'user',content:message});aiAddMessage('user',message);$('ai
 try{const response=await fetch(AI_API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:aiHistory.slice(-10)})});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||'The assistant is temporarily unavailable. Please try again.');if(typeof data.reply!=='string'||!data.reply.trim())throw new Error('The assistant returned an empty response. Please try again.');pending.classList.remove('thinking');pending.textContent=data.reply;aiHistory.push({role:'assistant',content:data.reply});if(aiHistory.length>12)aiHistory.splice(0,aiHistory.length-12);}
 catch(err){pending.classList.add('error');pending.classList.remove('thinking');pending.textContent=err.message||'Connection error. Please try again.';aiHistory.pop();}
 finally{aiSetBusy(false);$('aiInput').focus();$('aiMessages').scrollTop=$('aiMessages').scrollHeight;}});
+
+// Cinematic NexTools intro: once per tab session, with skip and reduced-motion support.
+(()=>{const intro=document.getElementById('cinematicIntro');if(!intro)return;const skip=document.getElementById('introSkip');let dismissed=false;const finish=()=>{if(dismissed)return;dismissed=true;intro.classList.add('intro-out');document.body.classList.remove('intro-lock');try{sessionStorage.setItem('nextools-intro-seen','1')}catch{}setTimeout(()=>intro.remove(),900)};let seen=false;try{seen=sessionStorage.getItem('nextools-intro-seen')==='1'}catch{}if(seen){intro.remove();document.body.classList.remove('intro-lock');return}skip.addEventListener('click',finish);intro.addEventListener('click',e=>{if(e.target===intro)finish()});if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){setTimeout(finish,700)}else{setTimeout(finish,4300)}document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dismissed)finish()},{once:true});})();
+
 $('year').textContent=new Date().getFullYear();
 </script></body></html>
