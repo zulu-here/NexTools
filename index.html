@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online tools for productivity, text formatting, calculations, and more.">
+  <meta name="theme-color" content="#0b0d12">
+  <title>NexTools — Free Online Tools</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d12;
+      --panel: #12151d;
+      --panel-hover: #191d28;
+      --border: #262b38;
+      --text: #f4f5fb;
+      --muted: #969db0;
+      --accent: #9b9cff;
+      --accent-2: #7278f5;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 50% -20%, #28265a 0%, transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .container {
+      width: min(1080px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #ffffff0d;
+      background: #0b0d12b8;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #111321;
+      background: linear-gradient(135deg, #c2c3ff, #8589ff);
+      font-size: 23px;
+    }
+
+    nav { display: flex; gap: 24px; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover { color: white; }
+
+    .hero {
+      text-align: center;
+      padding: 88px 0 58px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid #9b9cff45;
+      background: #9b9cff10;
+      color: #c3c4ff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 23px auto 16px;
+      font-size: clamp(39px, 7vw, 70px);
+      line-height: 1.07;
+      letter-spacing: -3px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #c1c4ff, #8c91ff, #c9a7ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 570px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .search-wrap {
+      max-width: 500px;
+      margin: 28px auto 0;
+    }
+
+    .search-wrap input { padding: 15px 17px; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 25px;
+      letter-spacing: -.8px;
+    }
+
+    .section-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .count { color: var(--muted); font-size: 13px; }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding-bottom: 85px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #151822, #101219);
+      border-radius: 18px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .card:hover {
+      border-color: #7378e966;
+      transform: translateY(-2px);
+    }
+
+    .tool-title {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 7px;
+    }
+
+    .tool-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #a1a4ff25;
+      background: #9395ff12;
+      border-radius: 13px;
+      font-size: 21px;
+    }
+
+    h3 { margin: 0; font-size: 17px; }
+
+    .tool-desc {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      color: var(--text);
+      background: #0c0e14;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent-2);
+    }
+
+    textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .field { margin: 12px 0; }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: #c2c6d3;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #202431;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .btn:hover { background: #2b3040; }
+
+    .btn.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, #aaaaff, #8387ff);
+      color: #111321;
+    }
+
+    .btn.primary:hover { filter: brightness(1.08); }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .stat {
+      padding: 10px;
+      border: 1px solid var(--border);
+      background: #0c0e14;
+      border-radius: 10px;
+    }
+
+    .stat strong { display: block; font-size: 20px; }
+    .stat span { color: var(--muted); font-size: 11px; }
+
+    .output {
+      min-height: 43px;
+      overflow-wrap: anywhere;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      background: #0c0e14;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .status {
+      min-height: 20px;
+      margin-top: 8px;
+      color: #b5b8ff;
+      font-size: 12px;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    input[type="range"] { accent-color: var(--accent); }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .calculator-grid .btn { min-width: 0; }
+
+    .calc-display {
+      padding: 18px 12px;
+      text-align: right;
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 27px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 650px) {
+      .hero { padding: 65px 0 45px; }
+      h1 { letter-spacing: -1.8px; }
+      .tools { grid-template-columns: 1fr; }
+      .card { padding: 19px; }
+      nav { gap: 13px; }
+      nav a { font-size: 12px; }
+      .count { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#" style="color:inherit;text-decoration:none">
+        <span class="logo" aria-hidden="true">ϟ</span>
+        <span>NexTools<span class="gradient">.</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <span class="eyebrow">FREE ONLINE TOOLS</span>
+      <h1>Small tools.<br><span class="gradient">Big difference.</span></h1>
+      <p>Simple, useful online tools to make everyday tasks faster. No downloads. No unnecessary hassle.</p>
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Search for a tool..." aria-label="Search tools">
+      </div>
+    </section>
+
+    <section class="container" id="tools">
+      <div class="section-head">
+        <div>
+          <h2>Explore tools</h2>
+          <p>Free utilities, right in your browser.</p>
+        </div>
+        <span class="count" id="tool-count">4 tools available</span>
+      </div>
+
+      <div class="tools" id="tool-grid">
+        <article class="card" data-search="word counter text words characters writing">
+          <div class="tool-title">
+            <span class="tool-icon" aria-hidden="true">Aa</span>
+            <h3>Word Counter</h3>
+          </div>
+          <p class="tool-desc">Count words, characters, and lines instantly.</p>
+          <textarea id="word-input" placeholder="Paste or type your text here..." aria-label="Text to count"></textarea>
+          <div class="stats" aria-live="polite">
+            <div class="stat"><strong id="words">0</strong><span>Words</span></div>
+            <div class="stat"><strong id="chars">0</strong><span>Characters</span></div>
+            <div class="stat"><strong id="lines">0</strong><span>Lines</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-search="password generator security random strong">
+          <div class="tool-title">
+            <span class="tool-icon" aria-hidden="true">🔐</span>
+            <h3>Password Generator</h3>
+          </div>
+          <p class="tool-desc">Generate a random password in your browser.</p>
+          <div class="range-row">
+            <label for="pass-length">Password length</label>
+            <strong id="length-value">20</strong>
+          </div>
+          <input id="pass-length" type="range" min="8" max="64" value="20">
+          <div class="field">
+            <label><input id="pass-upper" type="checkbox" checked style="width:auto"> Uppercase letters (A–Z)</label>
+            <label><input id="pass-lower" type="checkbox" checked style="width:auto"> Lowercase letters (a–z)</label>
+            <label><input id="pass-number" type="checkbox" checked style="width:auto"> Numbers (0–9)</label>
+            <label><input id="pass-symbol" type="checkbox" checked style="width:auto"> Symbols (!@#...)</label>
+          </div>
+          <div class="output" id="pass-output" aria-live="polite">Click generate to create a password.</div>
+          <div class="actions">
+            <button class="btn primary" id="generate-pass">Generate password</button>
+            <button class="btn" id="copy-pass">Copy</button>
+          </div>
+          <div class="status" id="pass-status" role="status"></div>
+        </article>
+
+        <article class="card" data-search="text formatter uppercase lowercase title case writing">
+          <div class="tool-title">
+            <span class="tool-icon" aria-hidden="true">Tt</span>
+            <h3>Text Formatter</h3>
+          </div>
+          <p class="tool-desc">Change the case of your text with one click.</p>
+          <textarea id="format-input" placeholder="Type or paste your text..." aria-label="Text to format"></textarea>
+          <div class="actions">
+            <button class="btn" data-format="upper">UPPERCASE</button>
+            <button class="btn" data-format="lower">lowercase</button>
+            <button class="btn" data-format="title">Title Case</button>
+            <button class="btn" data-format="trim">Clean spaces</button>
+          </div>
+          <div class="field">
+            <label for="format-output">Result</label>
+            <textarea id="format-output" placeholder="Your result will appear here..." aria-label="Formatted text" readonly></textarea>
+          </div>
+          <button class="btn primary" id="copy-format">Copy result</button>
+          <div class="status" id="format-status" role="status"></div>
+        </article>
+
+        <article class="card" data-search="calculator math addition subtraction multiply divide">
+          <div class="tool-title">
+            <span class="tool-icon" aria-hidden="true">∑</span>
+            <h3>Quick Calculator</h3>
+          </div>
+          <p class="tool-desc">A simple calculator for everyday math.</p>
+          <div class="output calc-display" id="calc-display" aria-live="polite">0</div>
+          <div class="calculator-grid" id="calc-buttons">
+            <button class="btn" data-calc="clear">AC</button>
+            <button class="btn" data-calc="back">⌫</button>
+            <button class="btn" data-calc="operator" data-value="/">÷</button>
+            <button class="btn" data-calc="operator" data-value="*">×</button>
+            <button class="btn" data-calc="digit" data-value="7">7</button>
+            <button class="btn" data-calc="digit" data-value="8">8</button>
+            <button class="btn" data-calc="digit" data-value="9">9</button>
+            <button class="btn" data-calc="operator" data-value="-">−</button>
+            <button class="btn" data-calc="digit" data-value="4">4</button>
+            <button class="btn" data-calc="digit" data-value="5">5</button>
+            <button class="btn" data-calc="digit" data-value="6">6</button>
+            <button class="btn" data-calc="operator" data-value="+">+</button>
+            <button class="btn" data-calc="digit" data-value="1">1</button>
+            <button class="btn" data-calc="digit" data-value="2">2</button>
+            <button class="btn" data-calc="digit" data-value="3">3</button>
+            <button class="btn primary" data-calc="equals">=</button>
+            <button class="btn" data-calc="digit" data-value="0" style="grid-column:span 2">0</button>
+            <button class="btn" data-calc="decimal">.</button>
+            <button class="btn" data-calc="sign">±</button>
+          </div>
+          <div class="status" id="calc-status" role="status"></div>
+        </article>
+      </div>
+      <p id="no-results" class="tool-desc hidden">No tools found. Try another search.</p>
+    </section>
+
+    <section class="container" id="about" style="padding-bottom:65px">
+      <div class="card">
+        <h2>Tools that just work.</h2>
+        <p class="tool-desc" style="margin:10px 0 0;max-width:650px">
+          NexTools is a simple collection of browser-based utilities.
+          Your text and calculations stay in your browser. No account is required.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> NexTools. Built for simplicity.</span>
+      <span>Free tools · No downloads required</span>
+    </div>
+  </footer>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    $("year").textContent = new Date().getFullYear();
+
+    // Word Counter
+    $("word-input").addEventListener("input", () => {
+      const text = $("word-input").value;
+      const trimmed = text.trim();
+      $("words").textContent = trimmed ? trimmed.split(/\s+/u).length : 0;
+      $("chars").textContent = text.length;
+      $("lines").textContent = text ? text.split(/\r\n|\r|\n/).length : 0;
+    });
+
+    // Tool search
+    $("search").addEventListener("input", () => {
+      const query = $("search").value.trim().toLowerCase();
+      const cards = [...document.querySelectorAll("#tool-grid .card")];
+      let visible = 0;
+      cards.forEach(card => {
+        const match = (card.dataset.search + " " + card.innerText).toLowerCase().includes(query);
+        card.classList.toggle("hidden", !match);
+        if (match) visible++;
+      });
+      $("tool-count").textContent = `${visible} tool${visible === 1 ? "" : "s"} available`;
+      $("no-results").classList.toggle("hidden", visible !== 0);
+    });
+
+    // Password Generator
+    const passwordChars = {
+      upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      lower: "abcdefghijklmnopqrstuvwxyz",
+      number: "0123456789",
+      symbol: "!@#$%^&*()-_=+[]{}?"
+    };
+
+    $("pass-length").addEventListener("input", () => {
+      $("length-value").textContent = $("pass-length").value;
+    });
+
+    function secureRandomIndex(max) {
+      const limit = Math.floor(256 / max) * max;
+      const bytes = new Uint8Array(1);
+      do {
+        crypto.getRandomValues(bytes);
+      } while (bytes[0] >= limit);
+      return bytes[0] % max;
+    }
+
+    function shuffleSecurely(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = secureRandomIndex(i + 1);
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generatePassword() {
+      const selected = [];
+      if ($("pass-upper").checked) selected.push(passwordChars.upper);
+      if ($("pass-lower").checked) selected.push(passwordChars.lower);
+      if ($("pass-number").checked) selected.push(passwordChars.number);
+      if ($("pass-symbol").checked) selected.push(passwordChars.symbol);
+
+      if (!selected.length) {
+        $("pass-status").textContent = "Select at least one character type.";
+        return;
+      }
+
+      const length = Number($("pass-length").value);
+      const all = selected.join("");
+      const result = selected.map(set => set[secureRandomIndex(set.length)]);
+
+      while (result.length < length) {
+        result.push(all[secureRandomIndex(all.length)]);
+      }
+
+      $("pass-output").textContent = shuffleSecurely(result).join("");
+      $("pass-status").textContent = "Generated locally in your browser.";
+    }
+
+    $("generate-pass").addEventListener("click", generatePassword);
+
+    async function copyText(text, statusId) {
+      try {
+        await navigator.clipboard.writeText(text);
+        $(statusId).textContent = "Copied to clipboard!";
+      } catch {
+        $(statusId).textContent = "Copy unavailable. Select the text and copy it manually.";
+      }
+    }
+
+    $("copy-pass").addEventListener("click", () => {
+      const text = $("pass-output").textContent;
+      if (text && !text.startsWith("Click generate")) copyText(text, "pass-status");
+    });
+
+    // Text Formatter
+    document.querySelectorAll("[data-format]").forEach(button => {
+      button.addEventListener("click", () => {
+        const text = $("format-input").value;
+        const mode = button.dataset.format;
+        let result = text;
+
+        if (mode === "upper") result = text.toLocaleUpperCase();
+        if (mode === "lower") result = text.toLocaleLowerCase();
+        if (mode === "title") {
+          result = text.toLocaleLowerCase().replace(
+            /(^|[\s\-–—])([\p{L}\p{N}])/gu,
+            (_, separator, letter) => separator + letter.toLocaleUpperCase()
+          );
+        }
+        if (mode === "trim") {
+          result = text.split(/\r\n|\r|\n/).map(line => line.trim()).join("\n").trim();
+          result = result.replace(/[ \t]{2,}/g, " ");
+        }
+
+        $("format-output").value = result;
+        $("format-status").textContent = "Text formatted.";
+      });
+    });
+
+    $("copy-format").addEventListener("click", () => {
+      if ($("format-output").value) {
+        copyText($("format-output").value, "format-status");
+      }
+    });
+
+    // Calculator: never evaluates arbitrary code.
+    let calcDisplay = "0";
+    let storedValue = null;
+    let pendingOperator = null;
+    let startNewNumber = false;
+
+    function renderCalc() {
+      $("calc-display").textContent = calcDisplay;
+    }
+
+    function calculate(a, b, operator) {
+      if (operator === "+") return a + b;
+      if (operator === "-") return a - b;
+      if (operator === "*") return a * b;
+      if (operator === "/") return b === 0 ? null : a / b;
+      return b;
+    }
+
+    function calcAction(action, value) {
+      $("calc-status").textContent = "";
+
+      if (action === "clear") {
+        calcDisplay = "0";
+        storedValue = null;
+        pendingOperator = null;
+        startNewNumber = false;
+      } else if (action === "digit") {
+        if (startNewNumber || calcDisplay === "0" || calcDisplay === "Error") {
+          calcDisplay = value;
+          startNewNumber = false;
+        } else if (calcDisplay.length < 16) {
+          calcDisplay += value;
+        }
+      } else if (action === "decimal") {
+        if (startNewNumber || calcDisplay === "Error") {
+          calcDisplay = "0.";
+          startNewNumber = false;
+        } else if (!calcDisplay.includes(".")) {
+          calcDisplay += ".";
+        }
+      } else if (action === "sign") {
+        if (calcDisplay !== "0" && calcDisplay !== "Error") {
+          calcDisplay = String(-Number(calcDisplay));
+        }
+      } else if (action === "back") {
+        if (!startNewNumber && calcDisplay !== "Error") {
+          calcDisplay = calcDisplay.length > 1 ? calcDisplay.slice(0, -1) : "0";
+          if (calcDisplay === "-") calcDisplay = "0";
+        }
+      } else if (action === "operator") {
+        if (calcDisplay === "Error") return;
+        const current = Number(calcDisplay);
+        if (pendingOperator && !startNewNumber) {
+          const result = calculate(storedValue, current, pendingOperator);
+          if (result === null || !Number.isFinite(result)) {
+            calcDisplay = "Error";
+            storedValue = null;
+            pendingOperator = null;
+            startNewNumber = true;
+            $("calc-status").textContent = "Cannot divide by zero.";
+            renderCalc();
+            return;
+          }
+          calcDisplay = String(Number(result.toPrecision(12)));
+        }
+        storedValue = Number(calcDisplay);
+        pendingOperator = value;
+        startNewNumber = true;
+      } else if (action === "equals") {
+        if (pendingOperator && storedValue !== null && calcDisplay !== "Error") {
+          const result = calculate(storedValue, Number(calcDisplay), pendingOperator);
+          if (result === null || !Number.isFinite(result)) {
+            calcDisplay = "Error";
+            $("calc-status").textContent = "Cannot divide by zero.";
+          } else {
+            calcDisplay = String(Number(result.toPrecision(12)));
+          }
+          storedValue = null;
+          pendingOperator = null;
+          startNewNumber = true;
+        }
+      }
+
+      renderCalc();
+    }
+
+    $("calc-buttons").addEventListener("click", event => {
+      const button = event.target.closest("button[data-calc]");
+      if (!button) return;
+      calcAction(button.dataset.calc, button.dataset.value);
+    });
+
+    // Initial password and calculator state
+    renderCalc();
+  </script>
+</body>
+</html>
