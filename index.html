@@ -109,17 +109,20 @@ body{padding-left:258px}.app-shell{min-width:0}.sidebar{position:fixed;z-index:3
 @media(max-width:600px){.nav-links{margin-left:0}.side-mobile-toggle{font-size:12px;padding:7px 9px}.hero{padding-top:42px}.side-bottom{margin-bottom:20px}}
 
 
-/* Fixed minimal 3D wordmark intro — transparent, text only */
+/* NexTools kinetic 3D wordmark intro, inspired by modern kinetic typography */
 body.intro-lock{overflow:hidden}
-#cinematicIntro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:transparent!important;color:#f7fbff;opacity:1;visibility:visible;pointer-events:none;transition:opacity .85s cubic-bezier(.22,.7,.25,1),visibility .85s ease}
+#cinematicIntro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#050912!important;color:#f7fbff;opacity:1;visibility:visible;pointer-events:none;transition:opacity .8s cubic-bezier(.22,.7,.25,1),visibility .8s ease}
 #cinematicIntro.intro-out{opacity:0;visibility:hidden;pointer-events:none}
-.intro-core{position:relative;display:flex;align-items:center;justify-content:center;max-width:100%;padding:24px;text-align:center;perspective:1100px;pointer-events:none}
-.intro-wordmark{position:relative;display:inline-block;max-width:100%;font-size:clamp(48px,11vw,124px);font-weight:950;line-height:1.08;letter-spacing:-.075em;white-space:nowrap;transform-style:preserve-3d;transform-origin:center center;animation:introWordReveal 1.5s cubic-bezier(.16,1,.3,1) both;pointer-events:auto;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;text-shadow:0 8px 0 #102e4c,0 14px 28px #0008}
+.intro-core{position:relative;display:flex;align-items:center;justify-content:center;max-width:100%;padding:24px;text-align:center;perspective:1100px;transform-style:preserve-3d;animation:introFloat 3.2s cubic-bezier(.45,0,.55,1) 1.25s infinite}
+.intro-wordmark{position:relative;display:inline-block;max-width:100%;font-size:clamp(48px,11vw,124px);font-weight:950;line-height:1.08;letter-spacing:-.075em;white-space:nowrap;transform-style:preserve-3d;transform-origin:center center;animation:introReveal 1.35s cubic-bezier(.16,1,.3,1) both;pointer-events:auto;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;text-shadow:0 2px 0 #23496f,0 5px 0 #173757,0 8px 0 #102b46,0 14px 28px #0009}
+.intro-char{display:inline-block;transform-style:preserve-3d;animation:introLetterWave 1.15s cubic-bezier(.22,.75,.25,1) both;animation-delay:calc(var(--i, 0) * 55ms + 180ms);will-change:transform,opacity}
 .intro-wordmark .intro-nex{color:#fff;text-shadow:0 0 12px #fff8,0 0 42px #4ba7ff55}
-.intro-wordmark .intro-tools{background:linear-gradient(105deg,#fff 0%,#b8e0ff 42%,#4ba7ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 14px #4ba7ff44)}
-@keyframes introWordReveal{0%{opacity:0;transform:translateY(24px) rotateX(35deg) scale(.85);filter:blur(8px)}65%{opacity:1;transform:translateY(-3px) rotateX(-4deg) scale(1.02);filter:blur(0)}100%{opacity:1;transform:translateY(0) rotateX(0) scale(1);filter:none}}
+.intro-wordmark .intro-tools{background:linear-gradient(105deg,#fff 0%,#b8e0ff 42%,#4ba7ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 16px #4ba7ff42)}
+@keyframes introReveal{0%{opacity:0;transform:translateY(35px) rotateX(48deg) rotateY(-12deg) scale(.78);filter:blur(10px)}58%{opacity:1;transform:translateY(-5px) rotateX(-7deg) rotateY(3deg) scale(1.035);filter:blur(0)}78%{transform:translateY(2px) rotateX(3deg) rotateY(-1deg) scale(.99)}100%{opacity:1;transform:translateY(0) rotateX(0) rotateY(0) scale(1);filter:blur(0)}}
+@keyframes introLetterWave{0%{opacity:0;transform:translate3d(0,28px,-35px) rotateX(-55deg) scale(.75)}65%{opacity:1;transform:translate3d(0,-5px,12px) rotateX(12deg) scale(1.06)}100%{opacity:1;transform:translate3d(0,0,0) rotateX(0) scale(1)}}
+@keyframes introFloat{0%,100%{transform:translate3d(0,0,0) rotateX(-2deg) rotateY(-2deg)}25%{transform:translate3d(0,-9px,0) rotateX(2deg) rotateY(2deg)}50%{transform:translate3d(0,-2px,0) rotateX(1deg) rotateY(0deg)}75%{transform:translate3d(0,-7px,0) rotateX(-1deg) rotateY(-2deg)}}
 @media(max-width:560px){.intro-core{padding:14px}.intro-wordmark{font-size:clamp(44px,12vw,72px);letter-spacing:-.08em}}
-@media(prefers-reduced-motion:reduce){.intro-wordmark{animation:none!important;opacity:1!important;filter:none!important}#cinematicIntro{transition:opacity .25s ease}}
+@media(prefers-reduced-motion:reduce){.intro-core,.intro-wordmark,.intro-char{animation:none!important;opacity:1!important;filter:none!important}#cinematicIntro{transition:opacity .25s ease}}
 
 /* === NexTools identity refresh: midnight navy / electric blue / white === */
 :root{--bg:#050912;--panel:#0b1422;--panel2:#101d30;--line:#20334b;--text:#f7fbff;--muted:#9aabc1;--blue:#4ba7ff;--purple:#8cc8ff;--mint:#b9e4ff;--radius:18px;color-scheme:dark}
@@ -350,27 +353,40 @@ try{const response=await fetch(AI_API_URL,{method:'POST',headers:{'Content-Type'
 catch(err){pending.classList.add('error');pending.classList.remove('thinking');pending.textContent=err.message||'Connection error. Please try again.';aiHistory.pop();}
 finally{aiSetBusy(false);$('aiInput').focus();$('aiMessages').scrollTop=$('aiMessages').scrollHeight;}});
 
-// Robust NexTools intro: starts once, fades out after 6 seconds, supports click/Escape and always releases the page scroll lock.
+// Kinetic 3D intro: stagger each character, gently float the wordmark, then close safely.
 (()=>{
   const intro=document.getElementById('cinematicIntro');
-  if(!intro) { document.body.classList.remove('intro-lock'); return; }
-  let closed=false;
-  let timerId;
+  if(!intro){document.body.classList.remove('intro-lock');return;}
+  const wordmark=intro.querySelector('.intro-wordmark');
+  if(wordmark){
+    let index=0;
+    wordmark.querySelectorAll('.intro-nex,.intro-tools').forEach(group=>{
+      const text=group.textContent;
+      group.textContent='';
+      [...text].forEach(char=>{
+        const letter=document.createElement('span');
+        letter.className='intro-char';
+        letter.style.setProperty('--i',index++);
+        letter.textContent=char;
+        group.appendChild(letter);
+      });
+    });
+  }
+  let closed=false,timerId;
   const finish=()=>{
     if(closed)return;
     closed=true;
-    window.clearTimeout(timerId);
+    clearTimeout(timerId);
     intro.classList.add('intro-out');
     document.body.classList.remove('intro-lock');
-    window.setTimeout(()=>{if(intro.isConnected)intro.remove();},900);
+    document.removeEventListener('keydown',onKey);
+    setTimeout(()=>{if(intro.isConnected)intro.remove();},850);
   };
-  const wordmark=intro.querySelector('.intro-wordmark');
-  if(wordmark) wordmark.addEventListener('click',finish,{once:true});
   const onKey=e=>{if(e.key==='Escape')finish();};
+  if(wordmark)wordmark.addEventListener('click',finish,{once:true});
   document.addEventListener('keydown',onKey);
-  timerId=window.setTimeout(()=>{finish();document.removeEventListener('keydown',onKey);},6000);
-  // Fail-safe in case another script changes the intro unexpectedly.
-  window.setTimeout(()=>{if(!closed)finish();},7500);
+  timerId=setTimeout(finish,6500);
+  setTimeout(()=>{if(!closed)finish();},8000);
 })();
 
 $('year').textContent=new Date().getFullYear();
