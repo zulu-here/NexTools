@@ -134,6 +134,21 @@ body.intro-lock{overflow:hidden}
 @media(max-width:560px){.intro-core{top:-7vh;padding:14px;gap:28px}.intro-wordmark{font-size:clamp(44px,12vw,72px);letter-spacing:-.08em}.intro-enter{padding:13px 20px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.intro-core,.intro-wordmark,.intro-char{animation:none!important;opacity:1!important;filter:none!important}#cinematicIntro{transition:opacity .25s ease}}
 
+
+/* Majestic white angel wings behind the NexTools wordmark */
+.intro-core{isolation:isolate}
+.intro-wings{position:absolute;z-index:0;left:50%;top:50%;width:min(92vw,900px);height:auto;max-height:340px;overflow:visible;transform:translate(-50%,-62%);pointer-events:none;opacity:0;filter:drop-shadow(0 0 14px #d9efff24);animation:wingsArrive 1.5s cubic-bezier(.16,1,.3,1) .15s forwards,wingsBreathe 4.8s ease-in-out 1.7s infinite;}
+.intro-wings path{vector-effect:non-scaling-stroke}
+.intro-wings .wing-base{fill:url(#angelWingFill);stroke:#eaf6ff;stroke-opacity:.78;stroke-width:1.1}
+.intro-wings .feather{fill:url(#featherFill);stroke:#fff;stroke-opacity:.76;stroke-width:1.05}
+.intro-wings .feather-shine{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:1.15;stroke-linecap:round}
+.intro-wordmark{z-index:2}
+.intro-enter{position:relative;z-index:3}
+@keyframes wingsArrive{0%{opacity:0;transform:translate(-50%,-54%) scale(.78)}100%{opacity:.94;transform:translate(-50%,-62%) scale(1)}}
+@keyframes wingsBreathe{0%,100%{transform:translate(-50%,-62%) scale(1) rotateX(0deg)}50%{transform:translate(-50%,-64%) scale(1.025) rotateX(2deg)}}
+@media(max-width:560px){.intro-wings{width:118vw;max-width:none;transform:translate(-50%,-64%)}@keyframes wingsArrive{0%{opacity:0;transform:translate(-50%,-56%) scale(.78)}100%{opacity:.9;transform:translate(-50%,-64%) scale(1)}}@keyframes wingsBreathe{0%,100%{transform:translate(-50%,-64%) scale(1)}50%{transform:translate(-50%,-66%) scale(1.02)}}}
+@media(prefers-reduced-motion:reduce){.intro-wings{animation:none!important;opacity:.9!important;transform:translate(-50%,-62%)!important}}
+
 /* === NexTools identity refresh: midnight navy / electric blue / white === */
 :root{--bg:#050912;--panel:#0b1422;--panel2:#101d30;--line:#20334b;--text:#f7fbff;--muted:#9aabc1;--blue:#4ba7ff;--purple:#8cc8ff;--mint:#b9e4ff;--radius:18px;color-scheme:dark}
 body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),radial-gradient(ellipse at 90% 15%,#0a1c36 0,transparent 31%),var(--bg)}
@@ -184,6 +199,34 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
 <body class="intro-lock">
 <div id="cinematicIntro" role="dialog" aria-label="NexTools introduction" aria-modal="true">
   <div class="intro-core">
+    <svg class="intro-wings" viewBox="0 0 900 340" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="angelWingFill" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#eaf5ff"/><stop offset="1" stop-color="#9fcfff"/></linearGradient>
+        <linearGradient id="featherFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".7" stop-color="#e2f1ff"/><stop offset="1" stop-color="#8fc5ff"/></linearGradient>
+      </defs>
+      <g class="left-wing">
+        <path class="wing-base" d="M445 235 C385 201 320 151 254 92 C208 51 154 28 83 24 C127 62 149 104 172 140 C122 121 79 116 30 125 C94 155 126 193 154 222 C105 211 70 221 39 241 C122 253 187 277 245 294 C306 312 377 286 445 250 Z"/>
+        <path class="feather" d="M414 235 C337 184 275 111 205 63 C224 113 270 164 329 209 C280 183 222 153 160 139 C206 189 269 225 344 246 Z"/>
+        <path class="feather" d="M369 251 C298 212 234 176 154 150 C193 202 247 237 311 257 Z"/>
+        <path class="feather" d="M326 265 C260 243 207 231 135 229 C184 263 234 278 285 280 Z"/>
+        <path class="feather" d="M280 280 C222 268 181 267 127 276 C176 295 219 302 260 299 Z"/>
+        <path class="feather" d="M393 219 C341 155 308 101 276 50 C277 111 308 171 365 226 Z"/>
+        <path class="feather" d="M351 235 C309 184 278 139 242 99 C255 153 285 201 329 242 Z"/>
+        <path class="feather" d="M238 217 C196 185 155 163 103 151 C136 188 174 211 219 228 Z"/>
+        <path class="feather-shine" d="M86 36 C170 83 235 153 316 219 M51 132 C132 155 201 201 275 249 M64 244 C128 250 192 273 249 291"/>
+      </g>
+      <g class="right-wing" transform="translate(900 0) scale(-1 1)">
+        <path class="wing-base" d="M445 235 C385 201 320 151 254 92 C208 51 154 28 83 24 C127 62 149 104 172 140 C122 121 79 116 30 125 C94 155 126 193 154 222 C105 211 70 221 39 241 C122 253 187 277 245 294 C306 312 377 286 445 250 Z"/>
+        <path class="feather" d="M414 235 C337 184 275 111 205 63 C224 113 270 164 329 209 C280 183 222 153 160 139 C206 189 269 225 344 246 Z"/>
+        <path class="feather" d="M369 251 C298 212 234 176 154 150 C193 202 247 237 311 257 Z"/>
+        <path class="feather" d="M326 265 C260 243 207 231 135 229 C184 263 234 278 285 280 Z"/>
+        <path class="feather" d="M280 280 C222 268 181 267 127 276 C176 295 219 302 260 299 Z"/>
+        <path class="feather" d="M393 219 C341 155 308 101 276 50 C277 111 308 171 365 226 Z"/>
+        <path class="feather" d="M351 235 C309 184 278 139 242 99 C255 153 285 201 329 242 Z"/>
+        <path class="feather" d="M238 217 C196 185 155 163 103 151 C136 188 174 211 219 228 Z"/>
+        <path class="feather-shine" d="M86 36 C170 83 235 153 316 219 M51 132 C132 155 201 201 275 249 M64 244 C128 250 192 273 249 291"/>
+      </g>
+    </svg>
     <div class="intro-wordmark" data-text="NexTools" aria-label="NexTools"><span class="intro-nex">Nex</span><span class="intro-tools">Tools</span></div>
     <button class="intro-enter" type="button" id="introEnter">Enter the site <span class="enter-arrow" aria-hidden="true">→</span></button>
   </div>
