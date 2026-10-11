@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#05070d">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050912"><meta name="description" content="NexTools offers free online developer and productivity tools: format JSON, encode URLs, generate passwords, compare text, preview Markdown and more. Fast, simple and privacy-minded."><meta name="keywords" content="free online tools, developer tools, JSON formatter, password generator, text tools, image compressor, lorem ipsum"><meta property="og:title" content="NexTools — Free Online Tools"><meta property="og:description" content="Free, fast and useful tools for developers, creators and everyday work."><meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop stop-color=%27%23f8fcff%27/%3E%3Cstop offset=%271%27 stop-color=%27%2349a5ff%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x=%272%27 y=%272%27 width=%2760%27 height=%2760%27 rx=%2718%27 fill=%27%23070e1c%27 stroke=%27%234ba7ff%27 stroke-width=%272%27/%3E%3Cpath d=%27M17 45V19L47 45V19%27 fill=%27none%27 stroke=%27url(%23g)%27 stroke-width=%276%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M12 52H52%27 stroke=%27%234ba7ff%27 stroke-width=%272%27 stroke-linecap=%27round%27 opacity=%27.8%27/%3E%3C/svg%3E">
 <meta name="description" content="Free online tools for text, passwords, JSON, URLs, Base64, UUIDs, colors and calculations. Fast, private and simple.">
 <title>NexTools — Free Online Tools</title>
@@ -134,6 +134,21 @@ body.intro-lock{overflow:hidden}
 @media(max-width:560px){.intro-core{top:-7vh;padding:14px;gap:28px}.intro-wordmark{font-size:clamp(44px,12vw,72px);letter-spacing:-.08em}.intro-enter{padding:13px 20px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.intro-core,.intro-wordmark,.intro-char{animation:none!important;opacity:1!important;filter:none!important}#cinematicIntro{transition:opacity .25s ease}}
 
+
+/* Majestic white angel wings behind the NexTools wordmark */
+.intro-core{isolation:isolate}
+.intro-wings{position:absolute;z-index:0;left:50%;top:50%;width:min(92vw,900px);height:auto;max-height:340px;overflow:visible;transform:translate(-50%,-62%);pointer-events:none;opacity:0;filter:drop-shadow(0 0 14px #d9efff24);animation:wingsArrive 1.5s cubic-bezier(.16,1,.3,1) .15s forwards,wingsBreathe 4.8s ease-in-out 1.7s infinite;}
+.intro-wings path{vector-effect:non-scaling-stroke}
+.intro-wings .wing-base{fill:url(#angelWingFill);stroke:#eaf6ff;stroke-opacity:.78;stroke-width:1.1}
+.intro-wings .feather{fill:url(#featherFill);stroke:#fff;stroke-opacity:.76;stroke-width:1.05}
+.intro-wings .feather-shine{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:1.15;stroke-linecap:round}
+.intro-wordmark{z-index:2}
+.intro-enter{position:relative;z-index:3}
+@keyframes wingsArrive{0%{opacity:0;transform:translate(-50%,-54%) scale(.78)}100%{opacity:.94;transform:translate(-50%,-62%) scale(1)}}
+@keyframes wingsBreathe{0%,100%{transform:translate(-50%,-62%) scale(1) rotateX(0deg)}50%{transform:translate(-50%,-64%) scale(1.025) rotateX(2deg)}}
+@media(max-width:560px){.intro-wings{width:118vw;max-width:none;transform:translate(-50%,-64%)}@keyframes wingsArrive{0%{opacity:0;transform:translate(-50%,-56%) scale(.78)}100%{opacity:.9;transform:translate(-50%,-64%) scale(1)}}@keyframes wingsBreathe{0%,100%{transform:translate(-50%,-64%) scale(1)}50%{transform:translate(-50%,-66%) scale(1.02)}}}
+@media(prefers-reduced-motion:reduce){.intro-wings{animation:none!important;opacity:.9!important;transform:translate(-50%,-62%)!important}}
+
 /* === NexTools identity refresh: midnight navy / electric blue / white === */
 :root{--bg:#050912;--panel:#0b1422;--panel2:#101d30;--line:#20334b;--text:#f7fbff;--muted:#9aabc1;--blue:#4ba7ff;--purple:#8cc8ff;--mint:#b9e4ff;--radius:18px;color-scheme:dark}
 body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),radial-gradient(ellipse at 90% 15%,#0a1c36 0,transparent 31%),var(--bg)}
@@ -179,11 +194,92 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
 .intro-wordmark .intro-tools{background:linear-gradient(105deg,#fff 0%,#b8e0ff 42%,#4ba7ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 18px #4ba7ff44)}
 .side-bottom strong{color:#eaf6ff}
 
+
+/* Refined cinematic intro: layered ivory feathers, restrained blue aura, crisp spacing */
+#cinematicIntro{background:radial-gradient(ellipse at 50% 43%,#0d1b2d 0%,#070d17 39%,#03060c 78%)!important}
+#cinematicIntro:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(#7ebfff0a 1px,transparent 1px),linear-gradient(90deg,#7ebfff0a 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 78%)}
+#cinematicIntro:after{content:"";position:absolute;width:min(78vw,900px);height:min(78vw,900px);border:1px solid #9ccfff0b;border-radius:50%;box-shadow:0 0 0 52px #9ccfff05,0 0 0 104px #9ccfff03;pointer-events:none}
+.intro-core{width:100%;gap:clamp(25px,4.5vh,43px);top:-4vh;z-index:1}
+.intro-wings{width:min(112vw,1240px);max-width:none;max-height:none;top:49%;transform:translate(-50%,-59%);opacity:0;filter:drop-shadow(0 0 13px #b9ddff30) drop-shadow(0 0 44px #398fff14);animation:wingsArrive 1.7s cubic-bezier(.16,1,.3,1) .15s forwards,wingsBreathe 6s ease-in-out 1.9s infinite}
+.intro-wings .wing-base{fill:url(#angelWingFill);stroke:#fff;stroke-opacity:.78;stroke-width:1.25}
+.intro-wings .feather{fill:url(#featherFill);stroke:url(#featherEdge);stroke-opacity:.78;stroke-width:1.15;stroke-linejoin:round}
+.intro-wings .feather-shine{fill:none;stroke:#fff;stroke-opacity:.68;stroke-width:1.2;stroke-linecap:round;filter:drop-shadow(0 0 2px #fff)}
+.intro-wings .wing-ridge{fill:none;stroke:#fff;stroke-opacity:.56;stroke-width:1.3;stroke-linecap:round}
+.intro-wings .wing-center-glint{stroke:#dcefff;stroke-width:1;stroke-opacity:.2;filter:drop-shadow(0 0 8px #8fc7ff)}
+.intro-wordmark{font-size:clamp(54px,10.5vw,126px);letter-spacing:-.075em;text-shadow:0 2px 0 #23496f,0 6px 0 #173757,0 12px 30px #000b,0 0 52px #4ba7ff18}
+.intro-wordmark .intro-nex{text-shadow:0 0 12px #fff9,0 0 35px #fff2,0 0 62px #4ba7ff4a}
+.intro-wordmark .intro-tools{filter:drop-shadow(0 0 22px #4ba7ff55)}
+.intro-enter{margin-top:3px;padding:15px 27px;border-color:#8ac9ff88;background:linear-gradient(130deg,#0c1a2aee,#0b2540e8);box-shadow:inset 0 1px #ffffff12,0 0 0 5px #4ba7ff08,0 12px 38px #0008,0 0 34px #1688ff12;backdrop-filter:blur(12px)}
+.intro-enter:before{content:"";width:5px;height:5px;border-radius:50%;background:#9ed4ff;box-shadow:0 0 12px #4ba7ff;display:inline-block}
+@keyframes wingsArrive{0%{opacity:0;transform:translate(-50%,-53%) scale(.82)}72%{opacity:.98;transform:translate(-50%,-60%) scale(1.015)}100%{opacity:.94;transform:translate(-50%,-59%) scale(1)}}
+@keyframes wingsBreathe{0%,100%{transform:translate(-50%,-59%) scale(1)}50%{transform:translate(-50%,-60.2%) scale(1.012)}}
+/* Cleaner application surfaces and more consistent interaction states */
+:root{--radius:17px}
+.navbar{backdrop-filter:blur(22px);box-shadow:0 8px 32px #0002}
+.hero{isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-1;left:50%;top:4%;width:min(900px,95%);height:360px;transform:translateX(-50%);background:radial-gradient(ellipse,#1688ff0c 0%,transparent 68%);pointer-events:none}
+.tool-card{transition:transform .24s cubic-bezier(.2,.8,.2,1),border-color .24s,box-shadow .24s,background .24s}
+.tool-card:focus-visible,.side-link:focus-visible,.side-category:focus-visible,.intro-enter:focus-visible{outline:2px solid #91ceff;outline-offset:3px}
+.panel,.ai-shell,.support-card,.about-card{backdrop-filter:blur(12px)}
+.field,.area,.select{transition:border-color .2s,box-shadow .2s,background .2s}
+.primary,.secondary,.filter,.nav-cta{transition:transform .2s ease,border-color .2s,background .2s,box-shadow .2s,filter .2s}
+footer{border-top-color:#8ccaff18}
+@media(max-width:700px){.intro-wings{width:145vw;top:47%;transform:translate(-50%,-58%)}.intro-core{top:-2vh;gap:30px}.intro-wordmark{font-size:clamp(48px,12vw,78px)}#cinematicIntro:after{width:95vw;height:95vw}}
+@media(prefers-reduced-motion:reduce){.intro-wings{animation:none!important;opacity:.92!important;transform:translate(-50%,-59%)!important}}
 </style>
 </head>
 <body class="intro-lock">
 <div id="cinematicIntro" role="dialog" aria-label="NexTools introduction" aria-modal="true">
   <div class="intro-core">
+    <svg class="intro-wings" viewBox="0 0 1200 440" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="angelWingFill" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".38" stop-color="#f1f8ff"/><stop offset=".76" stop-color="#c9e5ff"/><stop offset="1" stop-color="#6faeff"/></linearGradient>
+        <linearGradient id="featherFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".46" stop-color="#edf7ff"/><stop offset="1" stop-color="#a5d1ff"/></linearGradient>
+        <linearGradient id="featherEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#8fc6ff" stop-opacity=".18"/></linearGradient>
+        <radialGradient id="wingAura"><stop offset="0" stop-color="#4ba7ff" stop-opacity=".18"/><stop offset="1" stop-color="#4ba7ff" stop-opacity="0"/></radialGradient>
+        <filter id="wingSoftGlow" x="-20%" y="-25%" width="140%" height="150%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <ellipse cx="600" cy="240" rx="480" ry="190" fill="url(#wingAura)"/>
+      <g class="wing-pair" filter="url(#wingSoftGlow)">
+        <g class="left-wing">
+          <path class="wing-base" d="M594 286 C520 250 454 202 386 147 C310 85 232 38 137 32 C182 81 211 131 241 176 C174 144 111 133 42 143 C112 185 159 224 196 267 C143 252 91 259 42 285 C143 297 226 326 302 350 C401 380 503 347 594 303 Z"/>
+          <g class="feather-stack">
+            <path class="feather" d="M562 281 C494 235 421 168 350 104 C367 163 427 225 510 278 C451 254 384 229 316 211 C366 263 438 294 518 303 Z"/>
+            <path class="feather" d="M527 304 C449 263 375 222 292 178 C326 235 391 279 475 312 Z"/>
+            <path class="feather" d="M489 323 C414 293 343 269 256 253 C307 294 371 323 445 333 Z"/>
+            <path class="feather" d="M445 338 C376 321 310 310 229 316 C284 343 345 354 408 351 Z"/>
+            <path class="feather" d="M400 350 C342 347 287 354 224 375 C278 385 336 378 383 364 Z"/>
+            <path class="feather" d="M561 264 C513 192 477 117 452 55 C440 122 472 204 528 272 Z"/>
+            <path class="feather" d="M522 277 C484 218 447 158 405 111 C421 175 453 235 499 286 Z"/>
+            <path class="feather" d="M462 287 C418 244 362 205 300 174 C335 220 389 261 444 295 Z"/>
+            <path class="feather" d="M401 307 C352 281 292 263 226 258 C270 291 326 313 385 320 Z"/>
+            <path class="feather" d="M343 329 C295 315 246 314 184 328 C230 346 279 352 329 345 Z"/>
+            <path class="feather" d="M300 348 C256 342 214 350 166 371 C210 378 255 371 291 359 Z"/>
+          </g>
+          <path class="feather-shine" d="M147 47 C246 96 337 182 438 251 M55 151 C173 185 274 248 379 303 M62 286 C165 294 252 329 326 349 M459 68 C469 136 505 211 545 259"/>
+          <path class="wing-ridge" d="M139 38 C265 104 367 206 594 293"/>
+        </g>
+        <g class="right-wing" transform="translate(1200 0) scale(-1 1)">
+          <path class="wing-base" d="M594 286 C520 250 454 202 386 147 C310 85 232 38 137 32 C182 81 211 131 241 176 C174 144 111 133 42 143 C112 185 159 224 196 267 C143 252 91 259 42 285 C143 297 226 326 302 350 C401 380 503 347 594 303 Z"/>
+          <g class="feather-stack">
+            <path class="feather" d="M562 281 C494 235 421 168 350 104 C367 163 427 225 510 278 C451 254 384 229 316 211 C366 263 438 294 518 303 Z"/>
+            <path class="feather" d="M527 304 C449 263 375 222 292 178 C326 235 391 279 475 312 Z"/>
+            <path class="feather" d="M489 323 C414 293 343 269 256 253 C307 294 371 323 445 333 Z"/>
+            <path class="feather" d="M445 338 C376 321 310 310 229 316 C284 343 345 354 408 351 Z"/>
+            <path class="feather" d="M400 350 C342 347 287 354 224 375 C278 385 336 378 383 364 Z"/>
+            <path class="feather" d="M561 264 C513 192 477 117 452 55 C440 122 472 204 528 272 Z"/>
+            <path class="feather" d="M522 277 C484 218 447 158 405 111 C421 175 453 235 499 286 Z"/>
+            <path class="feather" d="M462 287 C418 244 362 205 300 174 C335 220 389 261 444 295 Z"/>
+            <path class="feather" d="M401 307 C352 281 292 263 226 258 C270 291 326 313 385 320 Z"/>
+            <path class="feather" d="M343 329 C295 315 246 314 184 328 C230 346 279 352 329 345 Z"/>
+            <path class="feather" d="M300 348 C256 342 214 350 166 371 C210 378 255 371 291 359 Z"/>
+          </g>
+          <path class="feather-shine" d="M147 47 C246 96 337 182 438 251 M55 151 C173 185 274 248 379 303 M62 286 C165 294 252 329 326 349 M459 68 C469 136 505 211 545 259"/>
+          <path class="wing-ridge" d="M139 38 C265 104 367 206 594 293"/>
+        </g>
+      </g>
+      <path class="wing-center-glint" d="M600 285 L600 330"/>
+    </svg>
     <div class="intro-wordmark" data-text="NexTools" aria-label="NexTools"><span class="intro-nex">Nex</span><span class="intro-tools">Tools</span></div>
     <button class="intro-enter" type="button" id="introEnter">Enter the site <span class="enter-arrow" aria-hidden="true">→</span></button>
   </div>
@@ -195,7 +291,7 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
   <input class="sidebar-search" id="sideSearch" type="search" placeholder="⌕ Find a tool…" aria-label="Find a tool">
   <div class="side-label">Workspace</div>
   <a class="side-link active" href="#home"><span class="side-icon">⌂</span>Overview</a>
-  <a class="side-link" href="#tools"><span class="side-icon">▦</span>All tools <span class="side-count" id="sideToolCount">15</span></a>
+  <a class="side-link" href="#tools"><span class="side-icon">▦</span>All tools <span class="side-count" id="sideToolCount">22</span></a>
   <a class="side-link" href="#favoritesSection"><span class="side-icon">☆</span>Favorites <span class="side-count" id="favoriteCount">0</span></a>
   <a class="side-link" href="#recentSection"><span class="side-icon">◷</span>Recently used</a>
   <div class="side-label">Categories</div>
@@ -236,7 +332,7 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
   </div>
 </div>
 <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="toolSearch" type="search" placeholder="Search tools… try JSON, color, password" aria-label="Search tools"><span class="kbd">Ctrl K</span></div><div class="stats"><span>✦ <strong>Free to use</strong></span><span>◈ <strong>Fast & simple</strong></span><span>⌁ <strong>Runs in your browser</strong></span></div><div class="hero-showcase" aria-label="Popular tools"><div class="showcase-chip"><span class="chip-icon">{ }</span><span class="chip-copy"><strong>JSON Formatter</strong><span>Clean code instantly</span></span></div><div class="showcase-chip"><span class="chip-icon">✳</span><span class="chip-copy"><strong>Password Generator</strong><span>Secure by design</span></span></div><div class="showcase-chip"><span class="chip-icon">◉</span><span class="chip-copy"><strong>Color Converter</strong><span>Find your perfect shade</span></span></div></div></section>
-<section class="section container reveal" id="favoritesSection"><div class="section-head"><div><h2>★ Your favorites</h2><p>Pin the tools you use most. Saved in this browser.</p></div></div><div class="tool-grid" id="favoriteGrid"><p class="subtext">Click the ☆ on any tool to add it here.</p></div></section><section class="section container reveal" id="recentSection"><div class="section-head"><div><h2>◷ Recently used</h2><p>Your latest tools, stored only in this browser.</p></div><button class="secondary" id="clearRecent" type="button">Clear history</button></div><div class="tool-grid" id="recentGrid"><p class="subtext">Tools you open will appear here.</p></div></section><section class="section container reveal" id="tools"><div class="section-head"><div><h2>Explore the tools</h2><p>Pick a category, then open the tool you need.</p></div><span class="count" id="toolCount">19 tools</span></div><div class="filters" role="group" aria-label="Filter tools"><button class="filter active" data-filter="all">✦ All tools</button><button class="filter" data-filter="text">Aa Text</button><button class="filter" data-filter="developer">⌘ Developer</button><button class="filter" data-filter="generator">✳ Generators</button><button class="filter" data-filter="color">◉ Colors</button><button class="filter" data-filter="math">＋ Math</button></div><div class="tool-grid" id="toolGrid">
+<section class="section container reveal" id="favoritesSection"><div class="section-head"><div><h2>★ Your favorites</h2><p>Pin the tools you use most. Saved in this browser.</p></div></div><div class="tool-grid" id="favoriteGrid"><p class="subtext">Click the ☆ on any tool to add it here.</p></div></section><section class="section container reveal" id="recentSection"><div class="section-head"><div><h2>◷ Recently used</h2><p>Your latest tools, stored only in this browser.</p></div><button class="secondary" id="clearRecent" type="button">Clear history</button></div><div class="tool-grid" id="recentGrid"><p class="subtext">Tools you open will appear here.</p></div></section><section class="section container reveal" id="tools"><div class="section-head"><div><h2>Explore the tools</h2><p>Pick a category, then open the tool you need.</p></div><span class="count" id="toolCount">22 tools</span></div><div class="filters" role="group" aria-label="Filter tools"><button class="filter active" data-filter="all">✦ All tools</button><button class="filter" data-filter="text">Aa Text</button><button class="filter" data-filter="developer">⌘ Developer</button><button class="filter" data-filter="generator">✳ Generators</button><button class="filter" data-filter="color">◉ Colors</button><button class="filter" data-filter="math">＋ Math</button></div><div class="tool-grid" id="toolGrid">
 <article class="tool-card" tabindex="0" role="button" data-tool="word" data-category="text" data-search="word counter words characters sentences paragraphs text writing"><span class="tool-icon">Aa</span><button class="favorite-toggle" type="button" aria-label="Add to favorites" title="Add to favorites">☆</button><h3>Word Counter</h3><p>Count words, characters, sentences and paragraphs instantly.</p><span class="tool-arrow">Open tool ↗</span></article>
 <article class="tool-card" tabindex="0" role="button" data-tool="password" data-category="generator" data-search="password generator secure random strong security"><span class="tool-icon">✳</span><button class="favorite-toggle" type="button" aria-label="Add to favorites" title="Add to favorites">☆</button><h3>Password Generator</h3><p>Create strong random passwords with your own settings.</p><span class="tool-arrow">Open tool ↗</span></article>
 <article class="tool-card" tabindex="0" role="button" data-tool="formatter" data-category="text" data-search="text formatter uppercase lowercase title case clean reverse"><span class="tool-icon">T↔</span><button class="favorite-toggle" type="button" aria-label="Add to favorites" title="Add to favorites">☆</button><h3>Text Formatter</h3><p>Change text case, clean spaces and reverse text.</p><span class="tool-arrow">Open tool ↗</span></article>
@@ -256,6 +352,9 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
 <article class="tool-card" tabindex="0" role="button" data-tool="sql" data-category="developer" data-search="sql formatter beautifier query database"><span class="tool-icon">SQL</span><button class="favorite-toggle" type="button" aria-label="Add to favorites">☆</button><h3>SQL Formatter</h3><p>Indent and tidy common SQL keywords.</p><span class="tool-arrow">Open tool ↗</span></article>
 <article class="tool-card" tabindex="0" role="button" data-tool="jwt" data-category="developer" data-search="jwt decoder json web token header payload claims"><span class="tool-icon">JWT</span><button class="favorite-toggle" type="button" aria-label="Add to favorites">☆</button><h3>JWT Decoder</h3><p>Inspect a token's header and payload locally.</p><span class="tool-arrow">Open tool ↗</span></article>
 <article class="tool-card" tabindex="0" role="button" data-tool="seo" data-category="developer" data-search="seo meta preview title description search result"><span class="tool-icon">⌕</span><button class="favorite-toggle" type="button" aria-label="Add to favorites">☆</button><h3>SEO Meta Preview</h3><p>Preview a search result title, URL and description.</p><span class="tool-arrow">Open tool ↗</span></article>
+<article class="tool-card" tabindex="0" role="button" data-tool="caseconvert" data-category="text" data-search="text case converter uppercase lowercase title case sentence case"><span class="tool-icon">Aa</span><button class="favorite-toggle" type="button" aria-label="Add to favorites" title="Add to favorites">☆</button><h3>Text Case Converter</h3><p>Switch text between uppercase, lowercase, title case and sentence case.</p><span class="tool-arrow">Open tool ↗</span></article>
+<article class="tool-card" tabindex="0" role="button" data-tool="lorem" data-category="generator" data-search="lorem ipsum placeholder dummy text paragraphs words generator"><span class="tool-icon">¶</span><button class="favorite-toggle" type="button" aria-label="Add to favorites" title="Add to favorites">☆</button><h3>Lorem Ipsum Generator</h3><p>Generate placeholder text for mockups, layouts and prototypes.</p><span class="tool-arrow">Open tool ↗</span></article>
+<article class="tool-card" tabindex="0" role="button" data-tool="imagecompress" data-category="generator" data-search="image compressor compress optimize reduce file size jpg jpeg webp png image"><span class="tool-icon">▧</span><button class="favorite-toggle" type="button" aria-label="Add to favorites" title="Add to favorites">☆</button><h3>Image Compressor</h3><p>Compress images locally in your browser and download a smaller copy.</p><span class="tool-arrow">Open tool ↗</span></article>
 <div class="no-results" id="noResults">No tools found. Try another search or category.</div></section>
 <section class="workspace container reveal" id="workspace"><div class="workspace-head"><h2>Your workspace</h2><p>Each tool works locally in your browser. Choose a card above to jump to it.</p></div><div class="workspace-grid">
 <article class="panel" id="word"><h3>✦ Word Counter</h3><p class="subtext">Get an instant breakdown of your text.</p><label class="label" for="wordInput">Your text</label><textarea class="area" id="wordInput" placeholder="Start typing or paste your text here…"></textarea><div class="metrics"><div class="metric"><strong id="words">0</strong><span>Words</span></div><div class="metric"><strong id="characters">0</strong><span>Characters</span></div><div class="metric"><strong id="sentences">0</strong><span>Sentences</span></div></div><div class="metrics"><div class="metric"><strong id="paragraphs">0</strong><span>Paragraphs</span></div><div class="metric"><strong id="readTime">0</strong><span>Min. read</span></div><div class="metric"><strong id="noSpaces">0</strong><span>No spaces</span></div></div><div class="btn-row"><button class="secondary" id="clearWord">Clear text</button><button class="secondary" id="copyWord">Copy text</button></div><div class="status" id="wordStatus" aria-live="polite"></div></article>
@@ -278,6 +377,9 @@ body{background:radial-gradient(ellipse at 14% -10%,#12345a 0,transparent 35%),r
 <article class="panel" id="sql"><h3>SQL Formatter</h3><p class="subtext">A lightweight formatter for common SQL keywords; not a full SQL parser.</p><label class="label" for="sqlInput">SQL query</label><textarea class="area" id="sqlInput" placeholder="select id, name from users where active = 1 order by name"></textarea><div class="btn-row"><button class="primary" id="formatSql">Format SQL</button><button class="secondary" id="clearSql">Clear</button></div><label class="label" for="sqlOutput">Formatted SQL</label><textarea class="area" id="sqlOutput" readonly></textarea><div class="btn-row"><button class="secondary" id="copySql">Copy result</button></div></article>
 <article class="panel" id="jwt"><h3>JWT Decoder</h3><p class="subtext">Decoding does not verify the signature or prove that a token is authentic. Don't paste sensitive live tokens.</p><label class="label" for="jwtInput">JWT token</label><textarea class="area" id="jwtInput" placeholder="eyJhbGciOi..."></textarea><div class="btn-row"><button class="primary" id="decodeJwt">Decode token</button><button class="secondary" id="clearJwt">Clear</button></div><label class="label">Decoded header</label><div class="output utility-output" id="jwtHeader">—</div><label class="label">Decoded payload</label><div class="output utility-output" id="jwtPayload">—</div><div class="status" id="jwtStatus" aria-live="polite"></div></article>
 <article class="panel" id="seo"><h3>⌕ SEO Meta Preview</h3><p class="subtext">Preview a basic Google-style result. Actual search snippets can differ.</p><label class="label" for="seoTitle">Page title</label><input class="field" id="seoTitle" maxlength="100" placeholder="Your page title"><label class="label" for="seoUrl">Page URL</label><input class="field" id="seoUrl" placeholder="https://example.com/page"><label class="label" for="seoDescription">Meta description</label><textarea class="area" id="seoDescription" maxlength="300" placeholder="Describe this page in a useful sentence…"></textarea><div class="output" style="margin-top:14px;background:#fff;color:#202124;border-color:#ddd"><div id="seoPreviewUrl" style="font-size:12px;color:#4d5156">example.com</div><div id="seoPreviewTitle" style="font-size:20px;color:#1a0dab;line-height:1.3">Your page title</div><div id="seoPreviewDescription" style="font-size:13px;color:#4d5156">Your meta description appears here.</div></div></article>
+<article class="panel" id="caseconvert"><h3>Text Case Converter</h3><p class="subtext">Change the capitalization of your text instantly.</p><label class="label" for="caseInput">Your text</label><textarea class="area" id="caseInput" placeholder="Paste or type text here…"></textarea><div class="btn-row"><button class="primary" id="caseUpper">UPPERCASE</button><button class="secondary" id="caseLower">lowercase</button><button class="secondary" id="caseTitle">Title Case</button><button class="secondary" id="caseSentence">Sentence case</button><button class="secondary" id="caseClear">Clear</button></div><label class="label" for="caseOutput">Result</label><textarea class="area" id="caseOutput" readonly placeholder="Your converted text appears here…"></textarea><div class="btn-row"><button class="secondary" id="caseCopy">Copy result</button></div></article>
+<article class="panel" id="lorem"><h3>Lorem Ipsum Generator</h3><p class="subtext">Generate placeholder text for mockups and prototypes. This works locally in your browser.</p><div class="form-row"><label class="label" for="loremParagraphs">Paragraphs</label><input class="field" id="loremParagraphs" type="number" min="1" max="20" value="3"></div><div class="btn-row"><button class="primary" id="generateLorem">Generate text</button><button class="secondary" id="copyLorem">Copy result</button></div><label class="label" for="loremOutput">Generated text</label><textarea class="area" id="loremOutput" placeholder="Your Lorem Ipsum text will appear here…"></textarea><div class="status" id="loremStatus" aria-live="polite"></div></article>
+<article class="panel" id="imagecompress"><h3>Image Compressor</h3><p class="subtext">Your image stays on your device. Compression uses your browser's canvas; JPEG and WebP can be compressed, while PNG support depends on the browser.</p><label class="label" for="imageFile">Choose an image</label><input class="field" id="imageFile" type="file" accept="image/*"><div class="form-row"><label class="label" for="imageFormat">Output format</label><select class="select" id="imageFormat"><option value="image/webp">WebP (smaller files)</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option></select><label class="label" for="imageQuality">Quality <span id="imageQualityValue">80%</span></label><input class="field" id="imageQuality" type="range" min="30" max="100" value="80"></div><div class="btn-row"><button class="primary" id="compressImage">Compress image</button><a class="secondary" id="downloadImage" hidden download="nextools-compressed.webp">Download compressed image</a></div><div class="output" id="imageInfo" aria-live="polite">Choose an image to begin.</div><div id="imagePreviewWrap" hidden style="margin-top:14px"><img id="imagePreview" alt="Compressed image preview" style="display:block;max-width:100%;max-height:320px;border-radius:12px"></div><div class="status" id="imageStatus" aria-live="polite"></div></article>
 </div></section>
 <section class="about container reveal" id="about"><div class="section-head"><div><h2>Why NexTools?</h2><p>Useful utilities with less friction.</p></div></div><div class="about-grid"><div class="about-card"><div class="tool-icon">⚡</div><h3>Fast and simple</h3><p>Open a tool and get straight to work, without a complicated setup.</p></div><div class="about-card"><div class="tool-icon">◈</div><h3>Privacy-minded</h3><p>Your text, JSON and generated values are processed locally in your browser.</p></div><div class="about-card"><div class="tool-icon">✦</div><h3>Free to use</h3><p>No account needed. Just open a tool and use it.</p></div></div><div class="support-card"><div class="support-copy"><h3>✦ Enjoying NexTools?</h3><p>NexTools is free to use. If it saves you time, you can support its development with a voluntary tip. No features are locked behind a payment.</p></div><a class="support-button" href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer" aria-label="Support NexTools on Ko-fi">☕ Support NexTools <span aria-hidden="true">↗</span></a></div></section></main>
 <footer><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true" style="width:30px;height:30px;border-radius:9px"><svg class="brand-symbol" viewBox="0 0 48 48" width="21" height="21" aria-hidden="true" focusable="false"><path d="M13 33V15L35 33V15" fill="none" stroke="#07101e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 38H39" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" opacity=".9"/><circle cx="35" cy="15" r="3" fill="#ffffff"/></svg></span><span>Nex<span>Tools</span></span></a><span>© <span id="year"></span> NexTools. Free tools for everyday work.</span><a href="https://ko-fi.com/zuluhere" target="_blank" rel="noopener noreferrer">Support this project ↗</a><span>Built to make things easier.</span></div></footer></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -402,5 +504,21 @@ finally{aiSetBusy(false);$('aiInput').focus();$('aiMessages').scrollTop=$('aiMes
   setTimeout(()=>{if(!closed)finish();},10500);
 })();
 
+// Text case converter
+const caseInput=$('caseInput'),caseOutput=$('caseOutput');
+$('caseUpper').addEventListener('click',()=>caseOutput.value=caseInput.value.toLocaleUpperCase());
+$('caseLower').addEventListener('click',()=>caseOutput.value=caseInput.value.toLocaleLowerCase());
+$('caseTitle').addEventListener('click',()=>caseOutput.value=caseInput.value.toLocaleLowerCase().replace(/(^|[\s\-’'])\p{L}/gu,m=>m.toLocaleUpperCase()));
+$('caseSentence').addEventListener('click',()=>caseOutput.value=caseInput.value.toLocaleLowerCase().replace(/(^\s*[\p{L}]|[.!?]\s+[\p{L}])/gu,m=>m.toLocaleUpperCase()));
+$('caseClear').addEventListener('click',()=>{caseInput.value='';caseOutput.value=''});
+$('caseCopy').addEventListener('click',()=>copyText(caseOutput.value));
+// Lorem Ipsum generator
+const loremWords='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum'.split(' ');
+$('generateLorem').addEventListener('click',()=>{const count=Math.max(1,Math.min(20,Number($('loremParagraphs').value)||1));$('loremParagraphs').value=count;const paras=[];for(let p=0;p<count;p++){const len=45+Math.floor(Math.random()*45),words=[];for(let i=0;i<len;i++)words.push(loremWords[Math.floor(Math.random()*loremWords.length)]);words[0]=words[0][0].toUpperCase()+words[0].slice(1);paras.push(words.join(' ')+'.')} $('loremOutput').value=paras.join('\n\n');$('loremStatus').textContent=`Generated ${count} paragraph${count===1?'':'s'}.`});
+$('copyLorem').addEventListener('click',()=>copyText($('loremOutput').value));
+// Local image compression. Never uploads the selected file.
+let compressedImageUrl=null;
+$('imageQuality').addEventListener('input',()=> $('imageQualityValue').textContent=$('imageQuality').value+'%');
+$('compressImage').addEventListener('click',()=>{const file=$('imageFile').files?.[0];if(!file){$('imageStatus').textContent='Choose an image first.';return}if(!file.type.startsWith('image/')){$('imageStatus').textContent='Please choose a valid image.';return}const format=$('imageFormat').value,quality=Number($('imageQuality').value)/100;const reader=new FileReader();reader.onerror=()=>{$('imageStatus').textContent='Could not read this image.'};reader.onload=()=>{const img=new Image();img.onerror=()=>{$('imageStatus').textContent='This image format could not be opened by your browser.'};img.onload=()=>{const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const ctx=canvas.getContext('2d');if(!ctx){$('imageStatus').textContent='Canvas is not available in this browser.';return}if(format==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height)}ctx.drawImage(img,0,0);canvas.toBlob(blob=>{if(!blob){$('imageStatus').textContent='Compression failed. Try another format.';return}if(compressedImageUrl)URL.revokeObjectURL(compressedImageUrl);compressedImageUrl=URL.createObjectURL(blob);const ext=format==='image/jpeg'?'jpg':format==='image/png'?'png':'webp';const link=$('downloadImage');link.href=compressedImageUrl;link.download='nextools-compressed.'+ext;link.hidden=false;$('imagePreview').src=compressedImageUrl;$('imagePreviewWrap').hidden=false;const saved=Math.round((1-blob.size/file.size)*100);$('imageInfo').textContent=`Original: ${(file.size/1024).toFixed(1)} KB · Compressed: ${(blob.size/1024).toFixed(1)} KB · ${saved>0?saved+'% smaller':Math.abs(saved)+'% larger'} · ${img.naturalWidth} × ${img.naturalHeight}px`;$('imageStatus').textContent='Done — download the compressed copy below.'},format,format==='image/png'?undefined:quality)};img.src=reader.result};reader.readAsDataURL(file)});
 $('year').textContent=new Date().getFullYear();
 </script></body></html>
