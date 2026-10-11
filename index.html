@@ -51,6 +51,43 @@ body{background:radial-gradient(ellipse at 50% -20%,#242426 0,transparent 42%),#
 .status{color:#d4d4d8}
 .toast{background:#171717;border-color:#4a4a4a}
 @keyframes luxeReveal{from{opacity:0;transform:translateY(16px) scale(.985);filter:blur(5px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+
+
+/* DARK LUXURY MEGA MENU — responsive, keyboard-friendly, and polished */
+.nav-inner{position:relative}
+.nav-links{gap:clamp(15px,2vw,27px)}
+.nav-links>a:not(.nav-cta){transition:color .22s ease}
+.nav-links>a:not(.nav-cta):hover{color:#fff}
+.nav-dropdown{position:relative;display:flex;align-items:center}
+.nav-drop-trigger{display:inline-flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid transparent;border-radius:9px;background:transparent;color:#c3c3c8;font-size:14px;cursor:pointer;transition:background .22s,border-color .22s,color .22s}
+.nav-drop-trigger:hover,.nav-dropdown.is-open .nav-drop-trigger{color:#fff;background:#ffffff08;border-color:#ffffff18}
+.nav-trigger-dot{width:6px;height:6px;border-radius:50%;background:#e6e6e9;box-shadow:0 0 12px #ffffff66}
+.chevron{font-size:16px;color:#89898f;line-height:1;transition:transform .25s ease}
+.nav-dropdown.is-open .chevron{transform:rotate(180deg)}
+.mega-menu{position:absolute;top:calc(100% + 19px);right:-185px;width:min(760px,calc(100vw - 48px));padding:23px;border:1px solid #ffffff20;border-radius:16px;background:linear-gradient(145deg,#151515f7,#090909fa 70%);box-shadow:0 28px 90px #000b,0 1px 0 #ffffff0a inset;backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(9px) scale(.985);transform-origin:top right;transition:opacity .22s ease,transform .22s ease,visibility .22s}
+.mega-menu:before{content:"";position:absolute;top:-5px;right:215px;width:9px;height:9px;border-top:1px solid #ffffff20;border-left:1px solid #ffffff20;background:#151515;transform:rotate(45deg)}
+.nav-dropdown.is-open .mega-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+.mega-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:1px 2px 18px;border-bottom:1px solid #ffffff12}
+.mega-heading>div{display:flex;flex-direction:column;gap:3px}.mega-kicker,.mega-label{font-size:9px;font-weight:800;letter-spacing:.18em;color:#85858b}.mega-heading strong{font-size:18px;letter-spacing:-.5px;color:#f2f2f3}.mega-count{padding:6px 9px;border:1px solid #ffffff18;border-radius:6px;color:#bdbdc2;font-size:9px;letter-spacing:.12em}
+.mega-columns{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px;padding:19px 0 18px}
+.mega-group{display:flex;flex-direction:column;gap:5px;min-width:0}.mega-label{padding:0 7px 7px}
+.mega-group>a{display:grid;grid-template-columns:34px minmax(0,1fr) 12px;align-items:center;gap:10px;padding:9px 7px;border:1px solid transparent;border-radius:9px;transition:background .2s,border-color .2s,transform .2s}
+.mega-group>a:hover,.mega-group>a:focus-visible{background:#ffffff09;border-color:#ffffff12;transform:translateX(2px);outline:none}
+.mega-icon{display:grid;place-items:center;width:32px;height:32px;border:1px solid #ffffff12;border-radius:9px;background:linear-gradient(145deg,#ffffff12,#ffffff03);color:#e0e0e4;font-size:12px;font-weight:750;letter-spacing:-.5px}
+.mega-group a>span:nth-child(2){display:flex;flex-direction:column;min-width:0;gap:2px}.mega-group strong{font-size:11px;font-weight:700;color:#e6e6e9;white-space:nowrap}.mega-group small{font-size:9px;color:#828289;line-height:1.45}.mega-arrow{font-size:12px;color:#77777e;opacity:0;transform:translate(-3px,3px);transition:opacity .2s,transform .2s}.mega-group a:hover .mega-arrow{opacity:1;transform:translate(0,0)}
+.mega-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 2px 0;border-top:1px solid #ffffff12;color:#818187;font-size:10px}.mega-footer>span{display:flex;align-items:center;gap:8px}.mega-live-dot{width:6px;height:6px;border-radius:50%;background:#d8d8dc;box-shadow:0 0 9px #ffffff4d}.mega-footer>a{color:#e7e7ea;transition:color .2s}.mega-footer>a:hover{color:#fff}.mega-footer>a span{margin-left:5px}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+@media(max-width:900px){.mega-menu{right:-120px}.mega-menu:before{right:150px}.nav-links{gap:12px}}
+@media(max-width:600px){
+ .nav-inner{position:relative}.nav-links{gap:8px}
+ .nav-dropdown{display:block;width:100%}.nav-drop-trigger{width:100%;justify-content:space-between;padding:11px 10px}
+ .mega-menu{position:static;width:100%;max-height:0;overflow:hidden;padding:0 10px;border:0;border-radius:10px;background:#0c0c0c;box-shadow:none;backdrop-filter:none;opacity:1;visibility:visible;pointer-events:none;transform:none;transition:max-height .3s ease,padding .3s ease,border-color .3s ease}
+ .mega-menu:before{display:none}.nav-dropdown.is-open .mega-menu{max-height:72vh;overflow-y:auto;padding:13px 10px;border:1px solid #ffffff12;pointer-events:auto;margin:4px 0 7px}
+ .mega-heading{padding-bottom:12px}.mega-heading strong{font-size:15px}.mega-columns{grid-template-columns:1fr;gap:14px;padding:13px 0}.mega-group{gap:3px}.mega-group>a{grid-template-columns:32px minmax(0,1fr) 12px;padding:8px 6px}.mega-group small{font-size:10px}.mega-footer{align-items:flex-start;flex-direction:column;gap:9px;padding-top:11px}
+ .nav-links>a:not(.nav-cta){padding:9px 10px}.nav-links .nav-cta{justify-content:center;margin-top:3px}
+}
+@media(prefers-reduced-motion:reduce){.mega-menu,.mega-group>a,.chevron{transition:none!important}}
+
 /* Cinematic introduction overlay */
 .luxe-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 50% 43%,#19191b 0%,#0b0b0c 35%,#030303 78%);color:#f2f2f3;transition:opacity .95s cubic-bezier(.2,.7,.2,1),visibility .95s;}
 .luxe-intro:before{content:"";position:absolute;inset:-40%;z-index:-2;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,#ffffff05 48deg,transparent 95deg,#ffffff06 180deg,transparent 245deg);animation:luxeAtmosphere 32s linear infinite}
@@ -97,7 +134,24 @@ body{background:radial-gradient(ellipse at 50% -20%,#242426 0,transparent 42%),#
 </div>
 
 <div class="ambient one" aria-hidden="true"></div><div class="ambient two" aria-hidden="true"></div><div class="ambient three" aria-hidden="true"></div>
-<header class="navbar"><div class="container nav-inner"><a class="brand" href="#home" aria-label="NexTools home"><span class="brand-mark">N</span><span>Nex<span>Tools</span></span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button><nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="#tools">Tools</a><a href="#workspace">Workspace</a><a href="#about">About</a><a class="nav-cta" href="#tools">Explore tools ↗</a></nav></div></header>
+<header class="navbar"><div class="container nav-inner">
+<a class="brand" href="#home" aria-label="NexTools home"><span class="brand-mark">N</span><span>Nex<span>Tools</span></span></a>
+<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" type="button"><span class="menu-toggle-icon" aria-hidden="true">☰</span> Menu</button>
+<nav class="nav-links" id="navLinks" aria-label="Main navigation">
+  <div class="nav-dropdown" id="navDropdown">
+    <button class="nav-drop-trigger" id="toolMenuToggle" type="button" aria-expanded="false" aria-controls="toolMegaMenu"><span class="nav-trigger-dot" aria-hidden="true"></span> Explore <span class="chevron" aria-hidden="true">⌄</span></button>
+    <div class="mega-menu" id="toolMegaMenu" aria-label="Explore NexTools">
+      <div class="mega-heading"><div><span class="mega-kicker">THE TOOLKIT</span><strong>Everything you need.</strong></div><span class="mega-count">09 TOOLS</span></div>
+      <div class="mega-columns">
+        <div class="mega-group"><span class="mega-label">TEXT & WRITING</span><a href="#word"><span class="mega-icon">Aa</span><span><strong>Word Counter</strong><small>Words, characters & reading time</small></span><span class="mega-arrow">↗</span></a><a href="#formatter"><span class="mega-icon">Tt</span><span><strong>Text Formatter</strong><small>Clean and transform text</small></span><span class="mega-arrow">↗</span></a></div>
+        <div class="mega-group"><span class="mega-label">DEVELOPER</span><a href="#json"><span class="mega-icon">{ }</span><span><strong>JSON Formatter</strong><small>Validate, format and minify</small></span><span class="mega-arrow">↗</span></a><a href="#url"><span class="mega-icon">↗</span><span><strong>URL Encoder</strong><small>Encode or decode URL text</small></span><span class="mega-arrow">↗</span></a><a href="#base64"><span class="mega-icon">01</span><span><strong>Base64 Converter</strong><small>Encode and decode strings</small></span><span class="mega-arrow">↗</span></a><a href="#uuid"><span class="mega-icon">⌗</span><span><strong>UUID Generator</strong><small>Generate unique identifiers</small></span><span class="mega-arrow">↗</span></a></div>
+        <div class="mega-group"><span class="mega-label">QUICK UTILITIES</span><a href="#password"><span class="mega-icon">✳</span><span><strong>Password Generator</strong><small>Strong random passwords</small></span><span class="mega-arrow">↗</span></a><a href="#calculator"><span class="mega-icon">＋</span><span><strong>Quick Calculator</strong><small>Fast everyday calculations</small></span><span class="mega-arrow">↗</span></a><a href="#color"><span class="mega-icon">◉</span><span><strong>Color Converter</strong><small>HEX, RGB and HSL values</small></span><span class="mega-arrow">↗</span></a></div>
+      </div>
+      <div class="mega-footer"><span><span class="mega-live-dot"></span> Free tools · Runs in your browser</span><a href="#tools">Browse all tools <span>↗</span></a></div>
+    </div>
+  </div>
+  <a href="#workspace">Workspace</a><a href="#about">About</a><a class="nav-cta" href="#tools">Explore tools <span aria-hidden="true">↗</span></a>
+</nav></div></header>
 <main id="home"><section class="hero container"><div class="eyebrow"><span class="dot"></span> Simple tools. Smarter work.</div><h1>Small tools.<br><span class="gradient">Big time savings.</span></h1><p>Nine free tools for everyday tasks, text, development and quick calculations. No account, no complicated setup — just choose a tool and get it done.</p>
 <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="toolSearch" type="search" placeholder="Search tools… try JSON, color, password" aria-label="Search tools"><span class="kbd">9 tools</span></div><div class="stats"><span>✦ <strong>Free to use</strong></span><span>◈ <strong>Fast & simple</strong></span><span>⌁ <strong>Runs in your browser</strong></span></div><div class="hero-showcase" aria-label="Popular tools"><div class="showcase-chip"><span class="chip-icon">{ }</span><span class="chip-copy"><strong>JSON Formatter</strong><span>Clean code instantly</span></span></div><div class="showcase-chip"><span class="chip-icon">✳</span><span class="chip-copy"><strong>Password Generator</strong><span>Secure by design</span></span></div><div class="showcase-chip"><span class="chip-icon">◉</span><span class="chip-copy"><strong>Color Converter</strong><span>Find your perfect shade</span></span></div></div></section>
 <section class="section container reveal" id="tools"><div class="section-head"><div><h2>Find your next useful tool</h2><p>Search all 9 tools or filter by category to get straight to what you need.</p></div><span class="count" id="toolCount">9 tools</span></div><div class="filters" role="group" aria-label="Filter tools"><button class="filter active" data-filter="all">✦ All tools</button><button class="filter" data-filter="text">Aa Text</button><button class="filter" data-filter="developer">⌘ Developer</button><button class="filter" data-filter="generator">✳ Generators</button><button class="filter" data-filter="color">◉ Colors</button><button class="filter" data-filter="math">＋ Math</button></div><div class="tool-grid" id="toolGrid">
@@ -127,8 +181,18 @@ body{background:radial-gradient(ellipse at 50% -20%,#242426 0,transparent 42%),#
 <script>
 const $=id=>document.getElementById(id);let toastTimer;function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 async function copyText(text){if(!text){toast('Nothing to copy yet.');return false}try{await navigator.clipboard.writeText(text);toast('Copied to clipboard!');return true}catch{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();toast(ok?'Copied to clipboard!':'Copy failed — copy manually.');return ok}}
-// Mobile navigation
-$('menuToggle').addEventListener('click',()=>{const nav=$('navLinks'),open=nav.classList.toggle('open');$('menuToggle').setAttribute('aria-expanded',String(open));$('menuToggle').textContent=open?'✕ Close':'☰ Menu'});document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{$('navLinks').classList.remove('open');$('menuToggle').setAttribute('aria-expanded','false');$('menuToggle').textContent='☰ Menu'}));
+// Responsive navigation and accessible mega-menu
+const navLinks = $('navLinks');
+const menuToggle = $('menuToggle');
+const navDropdown = $('navDropdown');
+const toolMenuToggle = $('toolMenuToggle');
+function setMegaMenu(open){navDropdown.classList.toggle('is-open',open);toolMenuToggle.setAttribute('aria-expanded',String(open));}
+menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.innerHTML=open?'<span class="menu-toggle-icon" aria-hidden="true">✕</span> Close':'<span class="menu-toggle-icon" aria-hidden="true">☰</span> Menu';if(!open)setMegaMenu(false)});
+toolMenuToggle.addEventListener('click',e=>{e.stopPropagation();setMegaMenu(!navDropdown.classList.contains('is-open'))});
+document.addEventListener('click',e=>{if(!navDropdown.contains(e.target))setMegaMenu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){setMegaMenu(false);navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='<span class="menu-toggle-icon" aria-hidden="true">☰</span> Menu';toolMenuToggle.focus()}});
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{setMegaMenu(false);navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='<span class="menu-toggle-icon" aria-hidden="true">☰</span> Menu'}));
+
 // Search and category filters
 const cards=[...document.querySelectorAll('.tool-card')];let activeFilter='all';function filterTools(){const q=$('toolSearch').value.toLowerCase().trim();let n=0;cards.forEach(card=>{const matchText=(card.innerText+' '+card.dataset.search).toLowerCase().includes(q),matchCat=activeFilter==='all'||card.dataset.category===activeFilter,show=matchText&&matchCat;card.style.display=show?'':'none';if(show)n++});$('toolCount').textContent=n+' '+(n===1?'tool':'tools');$('noResults').style.display=n?'none':'block'}$('toolSearch').addEventListener('input',filterTools);document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===btn));activeFilter=btn.dataset.filter;filterTools()}));cards.forEach(card=>card.addEventListener('click',()=>{const panel=$(card.dataset.tool);if(panel)panel.scrollIntoView({behavior:'smooth',block:'start'})}));document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('toolSearch').focus()}if(e.key==='Escape'){$('toolSearch').value='';activeFilter='all';document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));filterTools()}});
 // Scroll reveal animations
